@@ -48,13 +48,19 @@
     
 ## 4. Phân tích ca sử dụng Maintain Timecard
 - **Xác định các lớp phân tích**:
-   - **Employee**: Đại diện cho nhân viên, có trách nhiệm nhập thời gian làm việc và quản lý timecard.
-   - **Timecard**: Lưu trữ thông tin về giờ làm việc của nhân viên, bao gồm thời gian bắt đầu, thời gian kết thúc, số giờ đã làm, và trạng thái (submitted, editable).
-   - **ChargeNumber**: Đại diện cho các mã số dự án mà giờ làm việc được ghi lại, liên kết với timecard.
+   - **Employee**:Đại diện cho nhân viên trong hệ thống, có khả năng nhập và cập nhật thông tin thời gian làm việc.
+   - **Timecard**: Lưu trữ thông tin về số giờ làm việc của nhân viên trong một khoảng thời gian nhất định.
+   - **ChargeNumber**:  Đại diện cho mã số dự án mà nhân viên ghi nhận giờ làm việc.
    - **TimecardService**: Chịu trách nhiệm quản lý các hoạt động liên quan đến timecard như tạo, lưu, và gửi timecard.
-   - **TimecardDAO**: Đảm nhận việc truy xuất và lưu trữ thông tin timecard trong cơ sở dữ liệu.
-   - **ProjectManagementDatabase**: Cung cấp danh sách các charge number cho nhân viên.
+   - **TimecardDAO**: Cung cấp các phương thức tương tác với cơ sở dữ liệu liên quan đến timecard.
+   - **ProjectManagementDatabase**: Mô phỏng cơ sở dữ liệu quản lý dự án, cung cấp thông tin về charge numbers.
 - **Nhiệm vụ của các lớp phân tích**:
+   - **Employee**: Nhập số giờ làm việc, gửi timecard và đảm bảo chỉ có thể chỉnh sửa timecard cho thời kỳ thanh toán hiện tại.
+   - **Timecard**: Quản lý số giờ làm việc cho từng charge number và thay đổi trạng thái khi được gửi.
+   - **ChargeNumber**: Cung cấp thông tin về các charge number có sẵn cho nhân viên để ghi nhận thời gian làm việc.
+   - **TimecardService**: Quản lý các yêu cầu như lấy timecard hiện tại, lưu thông tin timecard và thực hiện các kiểm tra khi gửi timecard.
+   - **TimecardDAO**: Thực hiện các truy vấn để tìm kiếm và lưu trữ thông tin timecard vào cơ sở dữ liệu.
+   - **ProjectManagementDatabase**: Cung cấp danh sách các charge number có sẵn để nhân viên có thể ghi nhận thời gian làm việc.
 - **Biểu đồ Sequence**:
   ![Diagram](https://www.planttext.com/api/plantuml/png/d5CzJiCm5DvzYZVIWGjaG0LQgGm49Ce17EUHcCPEPJj17H430sT0AcBk15CpTCX9V0AkWDiqKLJw0sI8dlpUz-Nv-xvy5OkkDbIPJ2H4ZxW4bMeab9bKGL-CatI2I4XTmV493Bb0HbLuUp6WCanGUU37TZuRGyHjyGf9EHMGk_APaH-pRO8RL3bdw464vZnJ2gMfMqUu_k15s24RyssAtkcL1tTSXlN1sQJV8BUIECJM7ORApjyXjyLZqoE49WPyErzaC8hBJna1Ap_0r6rmpvxTF60AgK4V7vfhTGXAnxi5TQtIUsJcaaeQeN1IzAYX0TLhUMAg8lGp4Q3IZcNdzA6xLKImPjedRSlUWJFpIOA9RV6ooV3VQ41UJe5LN7B5zSkmQ9fZesVjHQVjLMIB6V-3JJeB13SjZmuWLg7RiSO1w2vHJHMle7nBb_LKnYvgxgIAIzUzb__dDm000F__0m00)
 - **Biểu đồ lớp**:
