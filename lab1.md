@@ -42,7 +42,7 @@
     - **PaymentMethod**: Lưu thông tin về phương thức thanh toán đã chọn.
     - **PaymentDAO**: Truy xuất và lưu thông tin về nhân viên và phương thức thanh toán vào cơ sở dữ liệu.
 - **Biểu đồ Sequence**:
-  ![Diagram](https://www.planttext.com/api/plantuml/png/T99FIWCn58VtESMZ-xb05wNLKZjOi3ZEGiH59XFQq3If-LCTn9KB5nx00nGH177VGRheIN82hs1c1kgCjLaaaE_zlhm7-SutNMsmCdRE4T8p9a19JH4op70AOvmfoJdq59aoGucnohC59ZCyeT0QAwgfCDWmAM24CwfQS8_0BoBd2oayWwiul0Qi8Gx_WcCfJ66dgYmWXgE7clm8QmhdrFhzeDempam60oj8qOEkNXe0D4rMCq6rXf6SC5BP_jD5L2qPeQKaQXZws63e4L9A3ZJJxvsLIN_k8HzF_3WbJvD27OT1Acz5qF5Zj-74vHyCKfT_0cSkVxB8NmTs4NJYi0r3V_Kem4nT_WmpjzuOkB5klK9bLQM9sd2vVRT0tFhDmftt0Tz-eQYGL8-SreFnO9SRklm5Z7Bvgghk-04QidfRdks25ygh6hI6qyHpcy7IhLy5IfDVytwiIqNg_zyF0000__y30000)
+  ![Diagram](https://www.planttext.com/api/plantuml/png/f5CnJiCm5DrzYgzEPU027L218hL32n8mC9haWwscTXIxaJeY9bGnz0Of30Wa90QcPEXWr7lu15m1Dsb4YagfX0VB_zll_VUVxSzirbIQHdeu28ZgSm6HL4YefsK4HuCma2D4GaYvXDqzEA6Z0GfztcbJuGSODU2GsUnUb1lGHSsaJtwUgs1FCOgvXmrG6A2dbza2Lozow1VX3bd5L5XQ-ySDkEB2BzKTZ3f-7PT1vnlg3guhVXRPz15YczrKMgM1XfvDPqFmYgv2Dd-RJyKrQ1S_Ur3hKXxK2BZngxAADnVcnL7Pz6a8WjdqDOIFYSt6DAU_osasczjRWqBXRwEqnIFd9BGmb8hh_sWMr-P103E9OuzD0ifc4z0cuT1dqhaejc_aRwgykysthcYCgw-chBtXlLIqjBdDRaLkrDZDvjs9kJHJkLWdWe6to92cKxBu65y0003__mC0)
     
 ## 4. Phân tích ca sử dụng Maintain Timecard
 ## 5. Hợp nhất kết quả phân tích
