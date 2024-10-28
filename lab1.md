@@ -43,6 +43,14 @@
     - **PaymentDAO**: Truy xuất và lưu thông tin về nhân viên và phương thức thanh toán vào cơ sở dữ liệu.
 - **Biểu đồ Sequence**:
   ![Diagram](https://www.planttext.com/api/plantuml/png/f5CnJiCm5DrzYgzEPU027L218hL32n8mC9haWwscTXIxaJeY9bGnz0Of30Wa90QcPEXWr7lu15m1Dsb4YagfX0VB_zll_VUVxSzirbIQHdeu28ZgSm6HL4YefsK4HuCma2D4GaYvXDqzEA6Z0GfztcbJuGSODU2GsUnUb1lGHSsaJtwUgs1FCOgvXmrG6A2dbza2Lozow1VX3bd5L5XQ-ySDkEB2BzKTZ3f-7PT1vnlg3guhVXRPz15YczrKMgM1XfvDPqFmYgv2Dd-RJyKrQ1S_Ur3hKXxK2BZngxAADnVcnL7Pz6a8WjdqDOIFYSt6DAU_osasczjRWqBXRwEqnIFd9BGmb8hh_sWMr-P103E9OuzD0ifc4z0cuT1dqhaejc_aRwgykysthcYCgw-chBtXlLIqjBdDRaLkrDZDvjs9kJHJkLWdWe6to92cKxBu65y0003__mC0)
+- **Biểu đồ lớp**:
+  ![Diagram](https://www.planttext.com/api/plantuml/png/V59BJiCm4Dtd55PNxI8BjbbK1O545hI8mW6cyT1Qs1FBdw08SJ8M78ahqAQnavWARwnvytbldltpzRso3eppIcPP9S5QTgUqh5j4zf6nuycPu0KJvFg8G671jiu8slSGS6xGsWJLq2eazu3kK1ydF8x3x3EmJU18gRhmkTKfrGxeRNr1GLNLdjpQgnsQc4j9jcWQKON56BCeiN8J1VD5dsj02WuEIzBUHTJh4vPsf3otrvl8yIg81qTlsfBFiG_AiwkB8XeUL46JC8IMeVGlvqjv3yGbcc6xG_s-qKxKPAD-BgoMq3wXzTATbSVddbtDM9vtr_HH2kOjMhRC4XlpV3dUE2qR58qAG-z_CwEYWYaWs7TrsGg9dtxfBm000F__0m00)
+- **Giải thích về biểu đồ lớp:**
+    - Employee: Đại diện cho thông tin của nhân viên, bao gồm ID, tên, địa chỉ, và phương thức thanh toán.
+    - PaymentMethod: Lưu trữ thông tin về phương thức thanh toán mà nhân viên chọn, bao gồm loại phương thức, tên ngân hàng và số tài khoản.
+    - PaymentService: Chịu trách nhiệm về các hoạt động liên quan đến thanh toán, như chọn phương thức thanh toán và cập nhật thông tin.
+    - PaymentDAO: Đảm nhận việc truy xuất và lưu thông tin nhân viên và phương thức thanh toán từ cơ sở dữ liệu.
+    - PaymentUIHandler: Quản lý giao diện người dùng, hiển thị các lựa chọn và thông báo kết quả.
     
 ## 4. Phân tích ca sử dụng Maintain Timecard
 ## 5. Hợp nhất kết quả phân tích
