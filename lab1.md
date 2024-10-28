@@ -24,17 +24,11 @@
 - **Legacy Interface** *(Cơ chế kết nối với hệ thống cũ)*: Tích hợp với hệ thống cơ sở dữ liệu quản lý dự án hiện có (DB2) để truy xuất thông tin mà không làm thay đổi nó. Điều này sẽ giúp tiết kiệm chi phí và thời gian cho việc triển khai hệ thống mới.
 ## 3. Phân tích ca sử dụng Payment
 - **Xác định các lớp phân tích**:
-  - **Boundary Class:PaymentUIHandler**
-      - Mô tả: Lớp này quản lý giao diện và tương tác với người dùng.
-  - **Control class:PaymentService**
-      - Mô tả: Xử lý logic nghiệp vụ liên quan đến việc thay đổi phương thức thanh toán.
-  - **Entity class**:
-      - Employee:
-        - Mô tả: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
-      - PaymentMethod:
-        - Mô tả: Đại diện cho thông tin thanh toán
-  - **Data Access Object (DAO) Class: PaymentDao**
-      - Mô tả: Truy cập và tương tác với cơ sở dữ liệu.
+  - **PaymentUIHandler**: Lớp này quản lý giao diện và tương tác với người dùng.
+  - **PaymentService**: Xử lý logic nghiệp vụ liên quan đến việc thay đổi phương thức thanh toán.
+  - **Employee**: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
+  - **PaymentMethod**: Đại diện cho thông tin thanh toán
+  - **PaymentDao**: Truy cập và tương tác với cơ sở dữ liệu.
 - **Nhiệm vụ của các lớp phân tích**:
     - **PaymentView**: Nhận lựa chọn từ nhân viên, hiển thị kết quả hoặc thông báo lỗi.
     - **PaymentService**: Điều phối quá trình lựa chọn phương thức thanh toán, kiểm tra dữ liệu hợp lệ, và chuyển thông tin đến lớp truy cập dữ liệu.
@@ -53,4 +47,23 @@
     - PaymentUIHandler: Quản lý giao diện người dùng, hiển thị các lựa chọn và thông báo kết quả.
     
 ## 4. Phân tích ca sử dụng Maintain Timecard
+- **Xác định các lớp phân tích**:
+   - **Employee**: Đại diện cho nhân viên, có trách nhiệm nhập thời gian làm việc và quản lý timecard.
+   - **Timecard**: Lưu trữ thông tin về giờ làm việc của nhân viên, bao gồm thời gian bắt đầu, thời gian kết thúc, số giờ đã làm, và trạng thái (submitted, editable).
+   - **ChargeNumber**: Đại diện cho các mã số dự án mà giờ làm việc được ghi lại, liên kết với timecard.
+   - **TimecardService**: Chịu trách nhiệm quản lý các hoạt động liên quan đến timecard như tạo, lưu, và gửi timecard.
+   - **TimecardDAO**: Đảm nhận việc truy xuất và lưu trữ thông tin timecard trong cơ sở dữ liệu.
+   - **ProjectManagementDatabase**: Cung cấp danh sách các charge number cho nhân viên.
+- **Nhiệm vụ của các lớp phân tích**:
+- **Biểu đồ Sequence**:
+  ![Diagram](https://www.planttext.com/api/plantuml/png/d5CzJiCm5DvzYZVIWGjaG0LQgGm49Ce17EUHcCPEPJj17H430sT0AcBk15CpTCX9V0AkWDiqKLJw0sI8dlpUz-Nv-xvy5OkkDbIPJ2H4ZxW4bMeab9bKGL-CatI2I4XTmV493Bb0HbLuUp6WCanGUU37TZuRGyHjyGf9EHMGk_APaH-pRO8RL3bdw464vZnJ2gMfMqUu_k15s24RyssAtkcL1tTSXlN1sQJV8BUIECJM7ORApjyXjyLZqoE49WPyErzaC8hBJna1Ap_0r6rmpvxTF60AgK4V7vfhTGXAnxi5TQtIUsJcaaeQeN1IzAYX0TLhUMAg8lGp4Q3IZcNdzA6xLKImPjedRSlUWJFpIOA9RV6ooV3VQ41UJe5LN7B5zSkmQ9fZesVjHQVjLMIB6V-3JJeB13SjZmuWLg7RiSO1w2vHJHMle7nBb_LKnYvgxgIAIzUzb__dDm000F__0m00)
+- **Biểu đồ lớp**:
+  ![Diagram](https://www.planttext.com/api/plantuml/png/h5FBJiCm4BpdArOzjOWSk5eeAhILg4G1gKYSNNj93RLJsUjA5UBBEF19_09k6hj9gt8YXpmsuzdP6VldwtleY5loUfLbOiMTWubUhwej8dna4AuSb6IW33LVXcjaC2UhJ5cN0D0GshlAM_TIsNUK_K7s6TcUbKR1hKniTRinfq2okpTLDFAajZmmCfZnzVLeoMs93rulq5x2D7GjqHO7NlBkI9dp2wsehQVDaJI9IdPdoa6Y4rQjILKc_JaPQevseqHq2g146dbhWnyHqSV6pUdUn05BYwD4li64fkRbW1fq9laJU29lVFEOfBqg8sFzTZj9glv1OEhxPAit53JZXfUeWmiXJBxWhcjGAm3N3-tkbQDEjCMECUt2tbKFyhn-fBt4GDSz71HPAaRWHQyRCWln6kBAjD4nkJmlEdOny0xF0S_Fnu0BWMw_D1k6tRmxKBy0003__mC0)
+- **Giải thích về biểu đồ lớp:**
+    - Employee: Lớp này lưu trữ thông tin nhân viên và có trách nhiệm nhập giờ làm việc.
+    - Timecard: Lớp này lưu trữ thông tin liên quan đến giờ làm việc, bao gồm thời gian bắt đầu, thời gian kết thúc, và trạng thái.
+    - ChargeNumber: Đại diện cho các mã số dự án, cho phép nhân viên ghi lại giờ làm việc cho từng dự án.
+    - TimecardService: Lớp này quản lý các chức năng liên quan đến timecard, bao gồm việc lấy timecard hiện tại, lưu timecard, và gửi timecard.
+    - TimecardDAO: Chịu trách nhiệm truy xuất và lưu trữ thông tin timecard trong cơ sở dữ liệu.
+    - ProjectManagementDatabase: Cung cấp danh sách charge numbers cho nhân viên để họ có thể nhập thông tin giờ làm việc cho các dự án cụ thể.
 ## 5. Hợp nhất kết quả phân tích
