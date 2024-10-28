@@ -20,8 +20,8 @@
 - **Communication** *(Cơ chế trao đổi thông tin)*: Ngoài việc giao tiếp giữa các thành phần trong hệ thống, cần có khả năng liên kết và trao đổi dữ liệu với các hệ thống bên ngoài, ví dụ như ngân hàng để thực hiện các giao dịch chuyển khoản lương cho nhân viên.
 - **Information Exchange and Format Conversion** *(Trao đổi dữ liệu và đổi định dạng)*: Hệ thống phải có khả năng tương tác với các phần mềm khác và có khả năng chuyển đổi giữa các định dạng dữ liệu khác nhau. Điều này sẽ nâng cao khả năng tích hợp và giao lưu thông tin của hệ thống.
 - **Security** *(Cơ chế bảo mật)*: Cần phải bảo vệ thông tin nhạy cảm của nhân viên, chẳng hạn như thông tin lương và thông tin tài khoản ngân hàng, khỏi các sự cố xâm nhập và đảm bảo quyền truy cập hợp lệ. Các biện pháp này có thể bao gồm xác thực đa yếu tố, mã hóa dữ liệu và kiểm soát quyền truy cập.
-- **Error Detection/Handling/Reporting** *(Cơ chế phát hiện, xử lý và thông báo lỗi)*: Hệ thống nên có chức năng phát hiện lỗi trong quá trình tính toán lương hoặc trong giao tiếp dữ liệu, và cung cấp các thông báo lỗi rõ ràng để hỗ trợ việc xử lý kịp thời. Điều này sẽ giúp duy trì tính ổn định và độ tin cậy của hệ thống.
-- **Legacy Interface** *(Cơ chế kết nối với hệ thống cũ)*: Hệ thống mới cần có khả năng tương tác với cơ sở dữ liệu hiện tại (Cơ sở Dữ liệu Quản lý Dự án) mà không làm thay đổi hay làm mất thông tin hiện có. Điều này sẽ giúp tiết kiệm chi phí và thời gian cho việc triển khai hệ thống mới.
+- **Error Detection/Handling/Reporting** *(Cơ chế phát hiện, xử lý và thông báo lỗi)*: Hệ thống nên có chức năng phát hiện lỗi trong quá trình tính toán lương hoặc trong giao tiếp dữ liệu, và cung cấp các thông báo lỗi rõ ràng để hỗ trợ việc kiểm soát và khắc phục vấn đề. 
+- **Legacy Interface** *(Cơ chế kết nối với hệ thống cũ)*: Tích hợp với hệ thống cơ sở dữ liệu quản lý dự án hiện có (DB2) để truy xuất thông tin mà không làm thay đổi nó. Điều này sẽ giúp tiết kiệm chi phí và thời gian cho việc triển khai hệ thống mới.
 ## 3. Phân tích ca sử dụng Payment
 
 ## 4. Phân tích ca sử dụng Maintain Timecard
