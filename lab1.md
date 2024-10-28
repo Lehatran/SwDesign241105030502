@@ -34,12 +34,12 @@
       - PaymentMethod:
         - Mô tả: Đại diện cho thông tin thanh toán
   - **Data Access Object (DAO) Class: PaymentDao**
-      Mô tả: Truy cập và tương tác với cơ sở dữ liệu.
+      - Mô tả: Truy cập và tương tác với cơ sở dữ liệu.
 - **Nhiệm vụ của các lớp phân tích**:
-    -**PaymentView**: Nhận lựa chọn từ nhân viên, hiển thị kết quả hoặc thông báo lỗi.
-    -**PaymentService**: Điều phối quá trình lựa chọn phương thức thanh toán, kiểm tra dữ liệu hợp lệ, và chuyển thông tin đến lớp truy cập dữ liệu.
-    -**Employee**: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
-    -**PaymentMethod**: Lưu thông tin về phương thức thanh toán đã chọn.
+    - **PaymentView**: Nhận lựa chọn từ nhân viên, hiển thị kết quả hoặc thông báo lỗi.
+    - **PaymentService**: Điều phối quá trình lựa chọn phương thức thanh toán, kiểm tra dữ liệu hợp lệ, và chuyển thông tin đến lớp truy cập dữ liệu.
+    - **Employee**: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
+    - **PaymentMethod**: Lưu thông tin về phương thức thanh toán đã chọn.
     - **PaymentDAO**: Truy xuất và lưu thông tin về nhân viên và phương thức thanh toán vào cơ sở dữ liệu.
     
 ## 4. Phân tích ca sử dụng Maintain Timecard
