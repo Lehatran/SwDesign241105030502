@@ -23,6 +23,24 @@
 - **Error Detection/Handling/Reporting** *(Cơ chế phát hiện, xử lý và thông báo lỗi)*: Hệ thống nên có chức năng phát hiện lỗi trong quá trình tính toán lương hoặc trong giao tiếp dữ liệu, và cung cấp các thông báo lỗi rõ ràng để hỗ trợ việc kiểm soát và khắc phục vấn đề. 
 - **Legacy Interface** *(Cơ chế kết nối với hệ thống cũ)*: Tích hợp với hệ thống cơ sở dữ liệu quản lý dự án hiện có (DB2) để truy xuất thông tin mà không làm thay đổi nó. Điều này sẽ giúp tiết kiệm chi phí và thời gian cho việc triển khai hệ thống mới.
 ## 3. Phân tích ca sử dụng Payment
-
+- **Xác định các lớp phân tích**:
+  - **Boundary Class:PaymentUIHandler**
+      - Mô tả: Lớp này quản lý giao diện và tương tác với người dùng.
+  - **Control class:PaymentService**
+      - Mô tả: Xử lý logic nghiệp vụ liên quan đến việc thay đổi phương thức thanh toán.
+  - **Entity class**:
+      - Employee:
+        - Mô tả: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
+      - PaymentMethod:
+        - Mô tả: Đại diện cho thông tin thanh toán
+  - **Data Access Object (DAO) Class: PaymentDao**
+      Mô tả: Truy cập và tương tác với cơ sở dữ liệu.
+- **Nhiệm vụ của các lớp phân tích**:
+    -**PaymentView**: Nhận lựa chọn từ nhân viên, hiển thị kết quả hoặc thông báo lỗi.
+    -**PaymentService**: Điều phối quá trình lựa chọn phương thức thanh toán, kiểm tra dữ liệu hợp lệ, và chuyển thông tin đến lớp truy cập dữ liệu.
+    -**Employee**: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
+    -**PaymentMethod**: Lưu thông tin về phương thức thanh toán đã chọn.
+    - **PaymentDAO**: Truy xuất và lưu thông tin về nhân viên và phương thức thanh toán vào cơ sở dữ liệu.
+    
 ## 4. Phân tích ca sử dụng Maintain Timecard
 ## 5. Hợp nhất kết quả phân tích
