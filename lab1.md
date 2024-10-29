@@ -76,7 +76,7 @@
    
  - **4.2 Nhiệm vụ của các lớp phân tích**:
    - **TimecardUIHandler**: Nhận số giờ làm việc từ nhân viên, hiển thị thông báo thành công hoặc lỗi.
-   - **ProjectManagementDatabase**: Cung cấp danh sách các charge number để nhân viên ghi nhận thời gian.
+   - **ProjectDatabase**: Cung cấp danh sách các charge number để nhân viên ghi nhận thời gian.
    - **TimecardService**: Quản lý logic nghiệp vụ liên quan đến việc tạo mới, lưu và gửi timecard, đồng thời kiểm tra tính hợp lệ của dữ liệu.
    - **Employee**: Nhập số giờ làm việc và gửi timecard cho kỳ hiện tại.
    - **Timecard**: Quản lý số giờ làm việc và trạng thái của từng kỳ.
