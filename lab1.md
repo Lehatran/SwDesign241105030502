@@ -53,8 +53,8 @@
         - updatePaymentMethod(): Phương thức để cập nhật phương thức thanh toán cho nhân viên.
      - **PaymentDAO**:
        - Phương thức:  
-        - findEmployeeById(employeeId: int): Employee: Tìm kiếm một nhân viên dựa trên mã định danh employeeId và trả về đối tượng Employee.
-        - savePaymentMethod(employee: Employee): Lưu phương thức thanh toán mới của nhân viên vào cơ sở dữ liệu.
+         - findEmployeeById(employeeId: int): Employee: Tìm kiếm một nhân viên dựa trên mã định danh employeeId và trả về đối tượng Employee.
+         - savePaymentMethod(employee: Employee): Lưu phương thức thanh toán mới của nhân viên vào cơ sở dữ liệu.
     - **PaymentUIHandler**:
       - Phương thức:
          - showOptions(): Hiển thị các tùy chọn phương thức thanh toán cho người dùng.
@@ -162,3 +162,10 @@
         - Phương thức:
             - displayChargeNumbers(chargeNumbers: List<ChargeNumber>): Hiển thị danh sách charge numbers để nhân viên có thể chọn.
             - getTimecardInput(): Lấy thông tin đầu vào về thời gian làm việc từ nhân viên.
+- **Lợi ích của việc hợp nhất**:
+    - **Cải Thiện Tính Khả Thi và Bảo Trì**: Giảm độ phức tạp, dễ dàng quản lý và bổ sung tính năng mới.
+    - **Tăng Cường Tính Tái Sử Dụng**: Chia sẻ mã và tài nguyên giữa các lớp, giúp tái sử dụng trong các dự án khác.
+    - **Tăng Cường Tính Nhất Quán**: Quản lý thông tin nhân viên một cách đồng bộ, giảm thiểu sai sót dữ liệu.
+    - **Cải Thiện Trải Nghiệm Người Dùng**: Cung cấp giao diện người dùng liền mạch, tiết kiệm thời gian cho nhân viên.
+    - **Tăng Cường Hiệu Suất Hệ Thống**: Giảm tài nguyên sử dụng và tối ưu quy trình, dẫn đến hiệu suất tốt hơn
+    - **Dễ Dàng Kiểm Tra và Gỡ Rối**: Cấu trúc rõ ràng giúp phát hiện và xử lý lỗi nhanh chóng hơn.
