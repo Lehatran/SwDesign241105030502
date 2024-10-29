@@ -24,11 +24,15 @@
 - **Legacy Interface** *(Cơ chế kết nối với hệ thống cũ)*: Tích hợp với hệ thống cơ sở dữ liệu quản lý dự án hiện có (DB2) để truy xuất thông tin mà không làm thay đổi nó. Điều này sẽ giúp tiết kiệm chi phí và thời gian cho việc triển khai hệ thống mới.
 ## 3. Phân tích ca sử dụng Payment
 - **3.1 Xác định các lớp phân tích**:
-  - **PaymentUIHandler**: Lớp này quản lý giao diện và tương tác với người dùng.
-  - **PaymentService**: Xử lý logic nghiệp vụ liên quan đến việc thay đổi phương thức thanh toán.
-  - **Employee**: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
-  - **PaymentMethod**: Đại diện cho thông tin thanh toán
-  - **PaymentDao**: Truy cập và tương tác với cơ sở dữ liệu.
+  - **Boundary class**: 
+    - **PaymentUIHandler**: Lớp này quản lý giao diện và tương tác với người dùng.
+  - **Control class**:
+    - **PaymentService**: Xử lý logic nghiệp vụ liên quan đến việc thay đổi phương thức thanh toán.
+  - **Entity class**:
+    - **Employee**: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
+    - **PaymentMethod**: Đại diện cho thông tin thanh toán
+  - **Data Access Object (DAO)**:
+    - **PaymentDao**: Truy cập và tương tác với cơ sở dữ liệu.
 - **3.2 Nhiệm vụ của các lớp phân tích**:
     - **PaymentView**: Nhận lựa chọn từ nhân viên, hiển thị kết quả hoặc thông báo lỗi.
     - **PaymentService**: Điều phối quá trình lựa chọn phương thức thanh toán, kiểm tra dữ liệu hợp lệ, và chuyển thông tin đến lớp truy cập dữ liệu.
