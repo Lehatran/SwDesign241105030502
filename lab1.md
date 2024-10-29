@@ -55,15 +55,16 @@
 ## 4. Phân tích ca sử dụng Maintain Timecard
  - **4.1 Xác định các lớp phân tích**:
    - **Boundary**:
-     - **TimecardUIHandler**: Quản lý giao diện người dùng và nhận thông tin từ nhân viên.
-     - **ProjectManagementDatabase**: Cung cấp thông tin về charge numbers cho người dùng.
+      - **TimecardUIHandler**: Quản lý giao diện người dùng và nhận thông tin từ nhân viên.
+      - **ProjectManagementDatabase**: Cung cấp thông tin về charge numbers cho người dùng.
     - **Control**:
-     - **TimecardService**: Chịu trách nhiệm quản lý các hoạt động liên quan đến timecard như tạo, lưu, và gửi timecard.
+      - **TimecardService**: Chịu trách nhiệm quản lý các hoạt động liên quan đến timecard như tạo, lưu, và gửi timecard.
     - **Entity**:
-     - **Employee**:Đại diện cho nhân viên trong hệ thống, có khả năng nhập và cập nhật thông tin thời gian làm việc.
-     - **Timecard**: Lưu trữ thông tin về số giờ làm việc của nhân viên trong một khoảng thời gian nhất định.
-     - **ChargeNumber**:  Đại diện cho mã số dự án mà nhân viên ghi nhận giờ làm việc.
-   - **TimecardDAO**: Cung cấp các phương thức tương tác với cơ sở dữ liệu liên quan đến timecard.
+      - **Employee**:Đại diện cho nhân viên trong hệ thống, có khả năng nhập và cập nhật thông tin thời gian làm việc.
+      - **Timecard**: Lưu trữ thông tin về số giờ làm việc của nhân viên trong một khoảng thời gian nhất định.
+      - **ChargeNumber**:  Đại diện cho mã số dự án mà nhân viên ghi nhận giờ làm việc.
+   -**Data Access Object (DAO)**:
+      - **TimecardDAO**: Cung cấp các phương thức tương tác với cơ sở dữ liệu liên quan đến timecard.
    
  - **4.2 Nhiệm vụ của các lớp phân tích**:
    - **TimecardUIHandler**: Nhận số giờ làm việc từ nhân viên, hiển thị thông báo thành công hoặc lỗi.
