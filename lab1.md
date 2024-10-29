@@ -34,7 +34,7 @@
   - **Data Access Object (DAO)**:
     - **PaymentDao**: Truy cập và tương tác với cơ sở dữ liệu.
 - **3.2 Nhiệm vụ của các lớp phân tích**:
-    - **PaymentView**: Nhận lựa chọn từ nhân viên, hiển thị kết quả hoặc thông báo lỗi.
+    - **PaymentUIHandler**: Nhận lựa chọn từ nhân viên, hiển thị kết quả hoặc thông báo lỗi.
     - **PaymentService**: Điều phối quá trình lựa chọn phương thức thanh toán, kiểm tra dữ liệu hợp lệ, và chuyển thông tin đến lớp truy cập dữ liệu.
     - **Employee**: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
     - **PaymentMethod**: Lưu thông tin về phương thức thanh toán đã chọn.
@@ -80,12 +80,28 @@
   
  - **4.4 Biểu đồ lớp**:
   
-  ![Diagram](https://www.planttext.com/api/plantuml/png/h5FBJiCm4BpdArOzjOWSk5eeAhILg4G1gKYSNNj93RLJsUjA5UBBEF19_09k6hj9gt8YXpmsuzdP6VldwtleY5loUfLbOiMTWubUhwej8dna4AuSb6IW33LVXcjaC2UhJ5cN0D0GshlAM_TIsNUK_K7s6TcUbKR1hKniTRinfq2okpTLDFAajZmmCfZnzVLeoMs93rulq5x2D7GjqHO7NlBkI9dp2wsehQVDaJI9IdPdoa6Y4rQjILKc_JaPQevseqHq2g146dbhWnyHqSV6pUdUn05BYwD4li64fkRbW1fq9laJU29lVFEOfBqg8sFzTZj9glv1OEhxPAit53JZXfUeWmiXJBxWhcjGAm3N3-tkbQDEjCMECUt2tbKFyhn-fBt4GDSz71HPAaRWHQyRCWln6kBAjD4nkJmlEdOny0xF0S_Fnu0BWMw_D1k6tRmxKBy0003__mC0)
+  ![Diagram](https://www.planttext.com/api/plantuml/png/h5HBJiCm5Dpd55PNxQ8BjXQg2cqbAY50AeZrI_n8J1Cx-5DK8Kx6WYDn1P8sTfocV2J89l7xpNZ6piVR-rGRKCOMUQJNN10bDKPHaeFMP56KkTmYafU8r0yswoMZP6KK5-a-Bg30RaJRkE3cbXUOW693qtnGua8ZIZQIi-ZLORc4mygaLVfUgZLMNKpQECTz8ib0fNXbYnWL9RDW5K8FUm1XfGC9PnrkYg5E52yDby8dUcnNg3OyyGAbQ6PMAHJjrlkQZLeL6iQmmLz8zKTXvsVNZkO35yo5pxSBp_0VoVRWxvON85ZUQi-uBdFOXhReOMY8fkIIQtCQLamwObHok_5BKTgTwPwjPt2Zv2CcPWu6Oj0ThphOesDuzHX_3GOd0p8Uxrx-kDB64aqcaGy6XPrZHqa6NnKU7YbA2X2GObZlSaVQQdifiVgd-aCrA7cog7YdhVNgMtvS65IGL5j_vYQh-gCf2bR_IJu1003__mC0)
  - **4.5 Giải thích về biểu đồ lớp:**
-    - Employee: Lớp này lưu trữ thông tin nhân viên và có trách nhiệm nhập giờ làm việc.
-    - Timecard: Lớp này lưu trữ thông tin liên quan đến giờ làm việc, bao gồm thời gian bắt đầu, thời gian kết thúc, và trạng thái.
-    - ChargeNumber: Đại diện cho các mã số dự án, cho phép nhân viên ghi lại giờ làm việc cho từng dự án.
-    - TimecardService: Lớp này quản lý các chức năng liên quan đến timecard, bao gồm việc lấy timecard hiện tại, lưu timecard, và gửi timecard.
-    - TimecardDAO: Chịu trách nhiệm truy xuất và lưu trữ thông tin timecard trong cơ sở dữ liệu.
-    - ProjectManagementDatabase: Cung cấp danh sách charge numbers cho nhân viên để họ có thể nhập thông tin giờ làm việc cho các dự án cụ thể.
+    - **Employee**
+      - Phương thức:
+         - submitTimecard(timecard: Timecard): Phương thức cho phép nhân viên gửi một Timecard.
+    - **Timecard**:
+      - Phương thức:
+        - submit(): Phương thức để gửi Timecard đến hệ thống.
+    - **TimecardService**:
+      - Phương thức:
+        - getCurrentTimecard(employeeId: String): Lấy Timecard hiện tại cho nhân viên dựa trên employeeId.
+        - saveTimecard(timecard: Timecard): Lưu Timecard vào cơ sở dữ liệu.
+        - submitTimecard(timecard: Timecard): Gửi Timecard cho hệ thống để xử lý.
+    - **TimecardDAO**:
+      - Phương thức:
+         - findTimecardByEmployeeId(employeeId: String): Tìm Timecard trong cơ sở dữ liệu dựa trên employeeId.
+         - saveTimecard(timecard: Timecard): Lưu Timecard vào cơ sở dữ liệu
+    - **TimecardUIHandler**:
+       - Phương thức:
+         - displayChargeNumbers(chargeNumbers: List<ChargeNumber>): Hiển thị danh sách charge numbers cho người dùng.
+         - getTimecardInput(): Lấy thông tin Timecard từ người dùng (giờ làm việc và số charge).
+    - **ProjectDatabase**:
+       - Phương thức:
+         - getChargeNumbers(): Lấy danh sách charge numbers từ cơ sở dữ liệu.
 ## 5. Hợp nhất kết quả phân tích
