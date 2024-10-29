@@ -112,3 +112,53 @@
        - Phương thức:
          - getChargeNumbers(): Lấy danh sách charge numbers từ cơ sở dữ liệu.
 ## 5. Hợp nhất kết quả phân tích
+ 
+  - **Biểu đồ class hợp nhất**:
+     ![Diagram](https://www.planttext.com/api/plantuml/png/h5JBRjim4BphAmYVx00AqgjG66dI017G9aMIekUrkB68a9J0XmiXo9Vrq4_gBrHsnHL52JdL5vdBsPdHSgW_ltvVMWV6UIMph99WBRjHhMmwHFQQiVwNCy4B9hGRLXeK5kpH6Q7tGmauDsXjKcsXKwZTLtHrqpDyYvVPMr2Rb4bIdPPFNPjAxK2_t2qugAh6QtVdrGuDxP78ar1OWHdvwyOR-wCnBzWxUvODXBUhQZ1x33pNqMfaYwl463UMFB77qLP6j4uqUcvkcC0ZceEemjGPioYnSfFnh3V3tW6auE2mrArtLFNjiPPsp8QG2ktHNNjZ-fw0MECGWVBVoMyAQWxcu824TiEV4HKSMRzJmhqBJCVm-TCzENiMceSqNdNbag-m7VcQ3Y2qZD25aQIYeNxLtP3YVnXA-gxVorlGN5AAUegw-Nb_oecbO-N2jXAw1xHUkgK3dTCCBN5GxJfEQ7zNlmZhFiQ8xMOCHA0E0UirwREm-h1YUNvwJ2zlmRn5oxPpwCNv-Tbgl8K5g-68eq94ERbSn9ZSaJpVndbv3qPU2gP0mnvZuHWOPu48bu2BZBCJZIo6vXdh59rg4JoxHCsF7-Y_0000__y30000)
+
+  - **Tài liệu mô tả**:
+    - **Lớp Employee**: Lớp này đại diện cho nhân viên trong hệ thống, bao gồm thông tin cá nhân và phương thức thanh toán của họ.
+       - Thuộc tính:
+           - id: int: Mã định danh duy nhất của nhân viên
+           - name: String: Tên đầy đủ của nhân viên.
+           - address: String: Địa chỉ liên lạc của nhân viên
+           - paymentMethod: PaymentMethod: Tham chiếu đến phương thức thanh toán mà nhân viên đã chọn.
+    - **Lớp PaymentMethod**: Lớp này mô tả phương thức thanh toán của nhân viên, cho phép hệ thống biết cách thanh toán cho họ.
+      - Thuộc tính:
+          - methodType: String: Loại phương thức thanh toán (ví dụ: chuyển khoản ngân hàng, thẻ tín dụng).
+          - bankName: String: Tên ngân hàng (nếu phương thức thanh toán là chuyển khoản).
+          - accountNumber: String: Số tài khoản ngân hàng của nhân viên.
+    - **Lớp Timecard**: Lớp này lưu trữ thông tin về thời gian làm việc của nhân viên. Mỗi Timecard đại diện cho một khoảng thời gian cụ thể mà nhân viên đã làm việc.
+       - Thuộc tính:
+           - hoursWorked: float: Tổng số giờ mà nhân viên đã làm việc trong khoảng thời gian đó.
+           - chargeNumber: ChargeNumber: Tham chiếu đến ChargeNumber, giúp phân loại chi phí hoặc dự án mà thời gian làm việc được ghi lại.
+    - **Lớp ChargeNumber**: Lớp này đại diện cho số hiệu chi phí (charge number) được sử dụng để phân loại thời gian làm việc trong Timecard
+       - Thuộc tính:
+           - chargeNumberId: String: Mã định danh cho charge number.
+           - description: String: Mô tả về charge number, giúp hiểu rõ hơn về mục đích sử dụng.
+    - **Lớp PaymentService**: Lớp này cung cấp các dịch vụ liên quan đến quản lý phương thức thanh toán.
+       - Phương thức:
+           - selectPaymentMethod(): Cho phép nhân viên chọn phương thức thanh toán từ một danh sách các tùy chọn.
+           - validateInput(): Xác thực dữ liệu đầu vào từ người dùng để đảm bảo tính hợp lệ.
+           - updatePaymentMethod(): Cập nhật thông tin phương thức thanh toán của nhân viên trong cơ sở dữ liệu
+    - **Lớp TimecardService**: Lớp này cung cấp các dịch vụ liên quan đến quản lý Timecard, bao gồm lưu trữ và truy xuất thông tin về thời gian làm việc.
+       - Phương thưc:
+           - getCurrentTimecard(employeeId: int): Timecard: Trả về Timecard hiện tại của nhân viên theo ID.
+           - saveTimecard(timecard: Timecard): Lưu thông tin Timecard vào cơ sở dữ liệu.
+           - submitTimecard(timecard: Timecard): Gửi Timecard để lưu trữ và xác nhận.
+    - **Lớp PaymentDAO**: Lớp này tương tác với cơ sở dữ liệu để thực hiện các hoạt động lưu trữ và truy vấn liên quan đến nhân viên và phương thức thanh toán.
+       - Phương thức:
+           - findEmployeeById(employeeId: int): Employee: Tìm kiếm và trả về thông tin của nhân viên theo ID.
+           - savePaymentMethod(employee: Employee): Lưu phương thức thanh toán của nhân viên vào cơ sở dữ liệu.
+    - **Lớp TimecardDAO**:Lớp này tương tác với cơ sở dữ liệu để thực hiện các hoạt động lưu trữ và truy vấn liên quan đến Timecard.
+        - Phương thức:
+           - findTimecardByEmployeeId(employeeId: int): Timecard: Tìm kiếm và trả về Timecard của nhân viên theo ID.
+           - saveTimecard(timecard: Timecard): Lưu Timecard vào cơ sở dữ liệu.
+    - **Lớp PaymentUIHandler**: Lớp này xử lý các tương tác giao diện người dùng cho các chức năng liên quan đến phương thức thanh toán.
+        - Phương thức:
+            - showOptions(): Hiển thị các tùy chọn phương thức thanh toán cho nhân viên.
+            - displayResult(): Hiển thị kết quả cập nhật phương thức thanh toán cho nhân viên.
+    - **Lớp TimecardUIHandler**: Lớp này xử lý các tương tác giao diện người dùng cho các chức năng liên quan đến Timecard.
+        - Phương thức:
+            - displayChargeNumbers(chargeNumbers: List<ChargeNumber>): Hiển thị danh sách charge numbers để nhân viên có thể chọn.
+            - getTimecardInput(): Lấy thông tin đầu vào về thời gian làm việc từ nhân viên.
