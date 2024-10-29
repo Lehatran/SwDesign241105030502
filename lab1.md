@@ -54,22 +54,28 @@
     
 ## 4. Phân tích ca sử dụng Maintain Timecard
  - **4.1 Xác định các lớp phân tích**:
-   - **Employee**:Đại diện cho nhân viên trong hệ thống, có khả năng nhập và cập nhật thông tin thời gian làm việc.
-   - **Timecard**: Lưu trữ thông tin về số giờ làm việc của nhân viên trong một khoảng thời gian nhất định.
-   - **ChargeNumber**:  Đại diện cho mã số dự án mà nhân viên ghi nhận giờ làm việc.
-   - **TimecardService**: Chịu trách nhiệm quản lý các hoạt động liên quan đến timecard như tạo, lưu, và gửi timecard.
+   - **Boundary**:
+     - **TimecardUIHandler**: Quản lý giao diện người dùng và nhận thông tin từ nhân viên.
+     - **ProjectManagementDatabase**: Cung cấp thông tin về charge numbers cho người dùng.
+    - **Control**:
+     - **TimecardService**: Chịu trách nhiệm quản lý các hoạt động liên quan đến timecard như tạo, lưu, và gửi timecard.
+    - **Entity**:
+     - **Employee**:Đại diện cho nhân viên trong hệ thống, có khả năng nhập và cập nhật thông tin thời gian làm việc.
+     - **Timecard**: Lưu trữ thông tin về số giờ làm việc của nhân viên trong một khoảng thời gian nhất định.
+     - **ChargeNumber**:  Đại diện cho mã số dự án mà nhân viên ghi nhận giờ làm việc.
    - **TimecardDAO**: Cung cấp các phương thức tương tác với cơ sở dữ liệu liên quan đến timecard.
-   - **ProjectManagementDatabase**: Mô phỏng cơ sở dữ liệu quản lý dự án, cung cấp thông tin về charge numbers.
+   
  - **4.2 Nhiệm vụ của các lớp phân tích**:
-   - **Employee**: Nhập số giờ làm việc, gửi timecard và đảm bảo chỉ có thể chỉnh sửa timecard cho thời kỳ thanh toán hiện tại.
-   - **Timecard**: Quản lý số giờ làm việc cho từng charge number và thay đổi trạng thái khi được gửi.
-   - **ChargeNumber**: Cung cấp thông tin về các charge number có sẵn cho nhân viên để ghi nhận thời gian làm việc.
-   - **TimecardService**: Quản lý các yêu cầu như lấy timecard hiện tại, lưu thông tin timecard và thực hiện các kiểm tra khi gửi timecard.
-   - **TimecardDAO**: Thực hiện các truy vấn để tìm kiếm và lưu trữ thông tin timecard vào cơ sở dữ liệu.
-   - **ProjectManagementDatabase**: Cung cấp danh sách các charge number có sẵn để nhân viên có thể ghi nhận thời gian làm việc.
+   - **TimecardUIHandler**: Nhận số giờ làm việc từ nhân viên, hiển thị thông báo thành công hoặc lỗi.
+   - **ProjectManagementDatabase**: Cung cấp danh sách các charge number để nhân viên ghi nhận thời gian.
+   - **TimecardService**: Quản lý logic nghiệp vụ liên quan đến việc tạo mới, lưu và gửi timecard, đồng thời kiểm tra tính hợp lệ của dữ liệu.
+   - **Employee**: Nhập số giờ làm việc và gửi timecard cho kỳ hiện tại.
+   - **Timecard**: Quản lý số giờ làm việc và trạng thái của từng kỳ.
+   - **ChargeNumber**: Cung cấp thông tin mã dự án để phân bổ thời gian làm việc.
+   - **TimecardDAO**: Thực hiện các truy vấn tìm kiếm và lưu trữ thông tin timecard vào cơ sở dữ liệu.
  - **4.3 Biểu đồ Sequence**:
   
-  ![Diagram](https://www.planttext.com/api/plantuml/png/d5CzJiCm5DvzYZVIWGjaG0LQgGm49Ce17EUHcCPEPJj17H430sT0AcBk15CpTCX9V0AkWDiqKLJw0sI8dlpUz-Nv-xvy5OkkDbIPJ2H4ZxW4bMeab9bKGL-CatI2I4XTmV493Bb0HbLuUp6WCanGUU37TZuRGyHjyGf9EHMGk_APaH-pRO8RL3bdw464vZnJ2gMfMqUu_k15s24RyssAtkcL1tTSXlN1sQJV8BUIECJM7ORApjyXjyLZqoE49WPyErzaC8hBJna1Ap_0r6rmpvxTF60AgK4V7vfhTGXAnxi5TQtIUsJcaaeQeN1IzAYX0TLhUMAg8lGp4Q3IZcNdzA6xLKImPjedRSlUWJFpIOA9RV6ooV3VQ41UJe5LN7B5zSkmQ9fZesVjHQVjLMIB6V-3JJeB13SjZmuWLg7RiSO1w2vHJHMle7nBb_LKnYvgxgIAIzUzb__dDm000F__0m00)
+  ![Diagram](https://www.planttext.com/api/plantuml/png/d5GzJiCm6DrzYc-a0nU8L5HeAzeb854Eu3WcCKtiod62EY861iGHa8gOEy7K30mvIKx05N2RtwO_GMI8R7_VUtd-tbD-ukzUeB1KeU-XOCeuI15GX31HGiBGdtbYJcc-lPRYdX8rm0fRUDrbYP3RMCvXmdnAiBHlnoFCROzAH0HNKdXbvORAY16AA5TCLO1YttUnTAWP-fR6Dde6vrS8TRjWkkbgEGE7fV4RUCd2XqWldmbqkmWLKk7qR5UDSH2BTdhh1Bbe0nog-g6KMbXHEg7v1yTs1pNwwnHQl05tZDl5mSLyM2BtacZ4NWqJcQu-84hZnsfw27iAp7Jr7SBKJRwu0oJvhCgWdoFQ322IOaLD-b1UgwEdhtdte1hkPqEfsHPeRAEdxHuP77ByiJ7Mh1nfuvuuA3UDNveC_uq1HCa2Y6PyvTkKVyn7W2DQZb3bYyucjPTfl6GbOfFLoZHdgzZkLn1QFbCrireGc_GT4DS2FJHnbUNCIjx5UhtWhiwSFiboqzFlzQ_a5m00__y30000)
   
  - **4.4 Biểu đồ lớp**:
   
