@@ -46,12 +46,20 @@
   
   ![Diagram](https://www.planttext.com/api/plantuml/png/V59BJiCm4Dtd55PNxI8BjbbK1O545hI8mW6cyT1Qs1FBdw08SJ8M78ahqAQnavWARwnvytbldltpzRso3eppIcPP9S5QTgUqh5j4zf6nuycPu0KJvFg8G671jiu8slSGS6xGsWJLq2eazu3kK1ydF8x3x3EmJU18gRhmkTKfrGxeRNr1GLNLdjpQgnsQc4j9jcWQKON56BCeiN8J1VD5dsj02WuEIzBUHTJh4vPsf3otrvl8yIg81qTlsfBFiG_AiwkB8XeUL46JC8IMeVGlvqjv3yGbcc6xG_s-qKxKPAD-BgoMq3wXzTATbSVddbtDM9vtr_HH2kOjMhRC4XlpV3dUE2qR58qAG-z_CwEYWYaWs7TrsGg9dtxfBm000F__0m00)
 - **3.5 Giải thích về biểu đồ lớp:**
-    - Employee: Đại diện cho thông tin của nhân viên, bao gồm ID, tên, địa chỉ, và phương thức thanh toán.
-    - PaymentMethod: Lưu trữ thông tin về phương thức thanh toán mà nhân viên chọn, bao gồm loại phương thức, tên ngân hàng và số tài khoản.
-    - PaymentService: Chịu trách nhiệm về các hoạt động liên quan đến thanh toán, như chọn phương thức thanh toán và cập nhật thông tin.
-    - PaymentDAO: Đảm nhận việc truy xuất và lưu thông tin nhân viên và phương thức thanh toán từ cơ sở dữ liệu.
-    - PaymentUIHandler: Quản lý giao diện người dùng, hiển thị các lựa chọn và thông báo kết quả.
-    
+    - **PaymentService**:
+      - Phương thức:
+        - selectPaymentMethod(): Phương thức cho phép người dùng chọn phương thức thanh toán.
+        - validateInput(): Phương thức để kiểm tra tính hợp lệ của dữ liệu đầu vào khi nhân viên cập nhật phương thức thanh toán.
+        - updatePaymentMethod(): Phương thức để cập nhật phương thức thanh toán cho nhân viên.
+     - **PaymentDAO**:
+       - Phương thức:  
+        - findEmployeeById(employeeId: int): Employee: Tìm kiếm một nhân viên dựa trên mã định danh employeeId và trả về đối tượng Employee.
+        - savePaymentMethod(employee: Employee): Lưu phương thức thanh toán mới của nhân viên vào cơ sở dữ liệu.
+    - **PaymentUIHandler**:
+      - Phương thức:
+         - showOptions(): Hiển thị các tùy chọn phương thức thanh toán cho người dùng.
+         - displayResult(): Hiển thị kết quả của thao tác cập nhật hoặc chọn phương thức thanh toán cho người dùng.
+      
 ## 4. Phân tích ca sử dụng Maintain Timecard
  - **4.1 Xác định các lớp phân tích**:
    - **Boundary**:
