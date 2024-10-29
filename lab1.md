@@ -1,18 +1,18 @@
 # Lab 1: Phân tích kiến trúc và ca sử dụng hệ thống "Payroll System"
 
 ## 1. Phân tích kiến trúc
- **1.1 Đề xuất kiến trúc**: Three-tier architecture
- **1.2 Lý do lựa chọn**:
+  **1.1 Đề xuất kiến trúc**: Three-tier architecture
+  **1.2 Lý do lựa chọn**:
     - **Tách biệt rõ ràng các chức năng và nhiệm vụ**: Mỗi lớp thực hiện một nhiệm vụ cụ thể, giúp hệ thống dễ quản lý và bảo trì. Nếu cần sửa đổi hoặc nâng cấp, chỉ cần thao tác trên lớp tương ứng mà không ảnh hưởng đến các lớp khác.
     - **Tăng khả năng mở rộng (Scalability)**: Tầng Base Reuse Layer giúp tái sử dụng mã nguồn và thư viện, cho phép mở rộng hệ thống dễ dàng.
     - **Dễ dàng triển khai và quản lý**: Presentation Layer cung cấp giao diện thân thiện trên desktop, phù hợp với nhu cầu sử dụng hàng ngày của nhân viên. Tầng Base Reuse Layer giúp quản lý các kết nối bên ngoài (ví dụ: kết nối ngân hàng) một cách tập trung và thuận tiện.
     - **Đảm bảo tính bảo mật và phân quyền**: Base Reuse Layer cung cấp các cơ chế xác thực, phân quyền và bảo mật, giúp đảm bảo tính an toàn cho hệ thống.
-  **1.3 Ý nghĩa từng thành phần**:
+   **1.3 Ý nghĩa từng thành phần**:
     - **Presentation Layer**: Là tầng giao diện người dùng, trách nhiệm của nó là giao tiếp với người dùng, hiển thị dữ liệu và nhận đầu vào từ người dùng.
     - **Business Logic Layer**: Tầng này xử lý các yêu cầu thao tác dữ liệu từ Presentation Layer và thực hiện các quy tắc và logic của doanh nghiệp trước khi truyền dữ liệu xuống Data Access Layer.
     - **Data Access Layer**: Đây là tầng quản lý việc truy cập vào cơ sở dữ liệu, nơi mà các dữ liệu thực tế được lưu trữ và xử lý.
     - **Base Reuse Layer**: Tầng này thường chứa các thành phần có thể tái sử dụng, giúp giảm thiểu mã lặp lại và tăng cường khả năng bảo trì cho ứng dụng.
-  **1.4 Biểu đồ package**:
+   **1.4 Biểu đồ package**:
    ![Diagram](https://www.planttext.com/api/plantuml/png/T99FIWCn58VtESMZ-xb05wNLKZjOi3ZEGiH59XFQq3If-LCTn9KB5nx00nGH177VGRheIN82hs1c1kgCjLaaaE_zlhm7-SutNMsmCdRE4T8p9a19JH4op70AOvmfoJdq59aoGucnohC59ZCyeT0QAwgfCDWmAM24CwfQS8_0BoBd2oayWwiul0Qi8Gx_WcCfJ66dgYmWXgE7clm8QmhdrFhzeDempam60oj8qOEkNXe0D4rMCq6rXf6SC5BP_jD5L2qPeQKaQXZws63e4L9A3ZJJxvsLIN_k8HzF_3WbJvD27OT1Acz5qF5Zj-74vHyCKfT_0cSkVxB8NmTs4NJYi0r3V_Kem4nT_WmpjzuOkB5klK9bLQM9sd2vVRT0tFhDmftt0Tz-eQYGL8-SreFnO9SRklm5Z7Bvgghk-04QidfRdks25ygh6hI6qyHpcy7IhLy5IfDVytwiIqNg_zyF0000__y30000)
   
 ## 2. Cơ chế phân tích
@@ -23,13 +23,13 @@
 - **Error Detection/Handling/Reporting** *(Cơ chế phát hiện, xử lý và thông báo lỗi)*: Hệ thống nên có chức năng phát hiện lỗi trong quá trình tính toán lương hoặc trong giao tiếp dữ liệu, và cung cấp các thông báo lỗi rõ ràng để hỗ trợ việc kiểm soát và khắc phục vấn đề. 
 - **Legacy Interface** *(Cơ chế kết nối với hệ thống cũ)*: Tích hợp với hệ thống cơ sở dữ liệu quản lý dự án hiện có (DB2) để truy xuất thông tin mà không làm thay đổi nó. Điều này sẽ giúp tiết kiệm chi phí và thời gian cho việc triển khai hệ thống mới.
 ## 3. Phân tích ca sử dụng Payment
- **3.1 Xác định các lớp phân tích**:
+  **3.1 Xác định các lớp phân tích**:
   - **PaymentUIHandler**: Lớp này quản lý giao diện và tương tác với người dùng.
   - **PaymentService**: Xử lý logic nghiệp vụ liên quan đến việc thay đổi phương thức thanh toán.
   - **Employee**: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
   - **PaymentMethod**: Đại diện cho thông tin thanh toán
   - **PaymentDao**: Truy cập và tương tác với cơ sở dữ liệu.
- **3.2 Nhiệm vụ của các lớp phân tích**:
+  **3.2 Nhiệm vụ của các lớp phân tích**:
     - **PaymentView**: Nhận lựa chọn từ nhân viên, hiển thị kết quả hoặc thông báo lỗi.
     - **PaymentService**: Điều phối quá trình lựa chọn phương thức thanh toán, kiểm tra dữ liệu hợp lệ, và chuyển thông tin đến lớp truy cập dữ liệu.
     - **Employee**: Đại diện cho thông tin của nhân viên, bao gồm phương thức thanh toán hiện tại.
@@ -39,10 +39,10 @@
   
   ![Diagram](https://www.planttext.com/api/plantuml/png/f5CnJiCm5DrzYgzEPU027L218hL32n8mC9haWwscTXIxaJeY9bGnz0Of30Wa90QcPEXWr7lu15m1Dsb4YagfX0VB_zll_VUVxSzirbIQHdeu28ZgSm6HL4YefsK4HuCma2D4GaYvXDqzEA6Z0GfztcbJuGSODU2GsUnUb1lGHSsaJtwUgs1FCOgvXmrG6A2dbza2Lozow1VX3bd5L5XQ-ySDkEB2BzKTZ3f-7PT1vnlg3guhVXRPz15YczrKMgM1XfvDPqFmYgv2Dd-RJyKrQ1S_Ur3hKXxK2BZngxAADnVcnL7Pz6a8WjdqDOIFYSt6DAU_osasczjRWqBXRwEqnIFd9BGmb8hh_sWMr-P103E9OuzD0ifc4z0cuT1dqhaejc_aRwgykysthcYCgw-chBtXlLIqjBdDRaLkrDZDvjs9kJHJkLWdWe6to92cKxBu65y0003__mC0)
   
-   **3.4 Biểu đồ lớp**:
+  **3.4 Biểu đồ lớp**:
   
   ![Diagram](https://www.planttext.com/api/plantuml/png/V59BJiCm4Dtd55PNxI8BjbbK1O545hI8mW6cyT1Qs1FBdw08SJ8M78ahqAQnavWARwnvytbldltpzRso3eppIcPP9S5QTgUqh5j4zf6nuycPu0KJvFg8G671jiu8slSGS6xGsWJLq2eazu3kK1ydF8x3x3EmJU18gRhmkTKfrGxeRNr1GLNLdjpQgnsQc4j9jcWQKON56BCeiN8J1VD5dsj02WuEIzBUHTJh4vPsf3otrvl8yIg81qTlsfBFiG_AiwkB8XeUL46JC8IMeVGlvqjv3yGbcc6xG_s-qKxKPAD-BgoMq3wXzTATbSVddbtDM9vtr_HH2kOjMhRC4XlpV3dUE2qR58qAG-z_CwEYWYaWs7TrsGg9dtxfBm000F__0m00)
-   **3.5 Giải thích về biểu đồ lớp:**
+  **3.5 Giải thích về biểu đồ lớp:**
     - Employee: Đại diện cho thông tin của nhân viên, bao gồm ID, tên, địa chỉ, và phương thức thanh toán.
     - PaymentMethod: Lưu trữ thông tin về phương thức thanh toán mà nhân viên chọn, bao gồm loại phương thức, tên ngân hàng và số tài khoản.
     - PaymentService: Chịu trách nhiệm về các hoạt động liên quan đến thanh toán, như chọn phương thức thanh toán và cập nhật thông tin.
@@ -71,7 +71,7 @@
    **4.4 Biểu đồ lớp**:
   
   ![Diagram](https://www.planttext.com/api/plantuml/png/h5FBJiCm4BpdArOzjOWSk5eeAhILg4G1gKYSNNj93RLJsUjA5UBBEF19_09k6hj9gt8YXpmsuzdP6VldwtleY5loUfLbOiMTWubUhwej8dna4AuSb6IW33LVXcjaC2UhJ5cN0D0GshlAM_TIsNUK_K7s6TcUbKR1hKniTRinfq2okpTLDFAajZmmCfZnzVLeoMs93rulq5x2D7GjqHO7NlBkI9dp2wsehQVDaJI9IdPdoa6Y4rQjILKc_JaPQevseqHq2g146dbhWnyHqSV6pUdUn05BYwD4li64fkRbW1fq9laJU29lVFEOfBqg8sFzTZj9glv1OEhxPAit53JZXfUeWmiXJBxWhcjGAm3N3-tkbQDEjCMECUt2tbKFyhn-fBt4GDSz71HPAaRWHQyRCWln6kBAjD4nkJmlEdOny0xF0S_Fnu0BWMw_D1k6tRmxKBy0003__mC0)
-  **4.5 Giải thích về biểu đồ lớp:**
+   **4.5 Giải thích về biểu đồ lớp:**
     - Employee: Lớp này lưu trữ thông tin nhân viên và có trách nhiệm nhập giờ làm việc.
     - Timecard: Lớp này lưu trữ thông tin liên quan đến giờ làm việc, bao gồm thời gian bắt đầu, thời gian kết thúc, và trạng thái.
     - ChargeNumber: Đại diện cho các mã số dự án, cho phép nhân viên ghi lại giờ làm việc cho từng dự án.
