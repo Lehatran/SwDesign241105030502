@@ -1,7 +1,7 @@
 # Lab 1: Phân tích kiến trúc và ca sử dụng hệ thống "Payroll System"
 
 ## 1. Phân tích kiến trúc
-- **Đề xuất kiến trúc**: Three-tier architecture
+- **1.1 Đề xuất kiến trúc**: Three-tier architecture
 - **1.2 Lý do lựa chọn**:
     - **Tách biệt rõ ràng các chức năng và nhiệm vụ**: Mỗi lớp thực hiện một nhiệm vụ cụ thể, giúp hệ thống dễ quản lý và bảo trì. Nếu cần sửa đổi hoặc nâng cấp, chỉ cần thao tác trên lớp tương ứng mà không ảnh hưởng đến các lớp khác.
     - **Tăng khả năng mở rộng (Scalability)**: Tầng Base Reuse Layer giúp tái sử dụng mã nguồn và thư viện, cho phép mở rộng hệ thống dễ dàng.
@@ -38,7 +38,7 @@
 - **3.3 Biểu đồ Sequence**:
   
   ![Diagram](https://www.planttext.com/api/plantuml/png/f5CnJiCm5DrzYgzEPU027L218hL32n8mC9haWwscTXIxaJeY9bGnz0Of30Wa90QcPEXWr7lu15m1Dsb4YagfX0VB_zll_VUVxSzirbIQHdeu28ZgSm6HL4YefsK4HuCma2D4GaYvXDqzEA6Z0GfztcbJuGSODU2GsUnUb1lGHSsaJtwUgs1FCOgvXmrG6A2dbza2Lozow1VX3bd5L5XQ-ySDkEB2BzKTZ3f-7PT1vnlg3guhVXRPz15YczrKMgM1XfvDPqFmYgv2Dd-RJyKrQ1S_Ur3hKXxK2BZngxAADnVcnL7Pz6a8WjdqDOIFYSt6DAU_osasczjRWqBXRwEqnIFd9BGmb8hh_sWMr-P103E9OuzD0ifc4z0cuT1dqhaejc_aRwgykysthcYCgw-chBtXlLIqjBdDRaLkrDZDvjs9kJHJkLWdWe6to92cKxBu65y0003__mC0)
-  - **3.4 Biểu đồ lớp**:
+- **3.4 Biểu đồ lớp**:
   
   ![Diagram](https://www.planttext.com/api/plantuml/png/V59BJiCm4Dtd55PNxI8BjbbK1O545hI8mW6cyT1Qs1FBdw08SJ8M78ahqAQnavWARwnvytbldltpzRso3eppIcPP9S5QTgUqh5j4zf6nuycPu0KJvFg8G671jiu8slSGS6xGsWJLq2eazu3kK1ydF8x3x3EmJU18gRhmkTKfrGxeRNr1GLNLdjpQgnsQc4j9jcWQKON56BCeiN8J1VD5dsj02WuEIzBUHTJh4vPsf3otrvl8yIg81qTlsfBFiG_AiwkB8XeUL46JC8IMeVGlvqjv3yGbcc6xG_s-qKxKPAD-BgoMq3wXzTATbSVddbtDM9vtr_HH2kOjMhRC4XlpV3dUE2qR58qAG-z_CwEYWYaWs7TrsGg9dtxfBm000F__0m00)
 - **3.5 Giải thích về biểu đồ lớp:**
