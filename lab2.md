@@ -22,9 +22,23 @@
   #### 1.4 Biểu đồ lớp
   ![Diagram](https://www.planttext.com/api/plantuml/png/V5D1JiCm4Bpx5LPFSEW7ScgLmWaX17nW5M-BfTWRrjkW2F4o3Zo9Bv34Jj8cBTVTcTdP7Vlt-sSJ15YEhbH52I7erHCqJ6MvDSvw6uH1Y5VwKscj6T-F62Hd1C5dh8ZbvhPhL4orDQcKinLa2x6LE2zGNsSyWiEjDmzKW5ZoBU9BpUn4u3snE_ToQMJL4eVAA-NafLD0ZbrZGrL2SshcJ6jffaKKvFUMNKHqkvXHh00sezWLtvE7qRsmnHhlN5LIWxW3IUQBy-DEWh6K-0VqoBCG0gODajX47QQCP9dDdK_P0ILicELsM0wvz63qUdqnkanRt-O2XGJzOULDBJ1BvkdniZvS3EsPOhvQI5r1zqhJwjbuzA1DQrxlcTo_tE7YMGebg5WvQVQ7MYobDkXDzwN-0000__y30000)
   #### 1.5 Giải thích về biểu đồ lớp
+   - **PayrollAdministrator**:
+       - Phương thức:
+          - requestCreateReport(): Phương thức này được gọi khi quản trị viên bảng lương yêu cầu hệ thống tạo một báo cáo. Đây là bước đầu tiên trong quá trình tạo báo cáo.
+          - provideReportCriteria(): Quản trị viên cung cấp các thông tin cần thiết cho báo cáo như loại báo cáo (tổng số giờ làm việc hoặc lương năm nay), ngày bắt đầu và kết thúc, và tên nhân viên.
+          - requestSaveReport(): Phương thức này được gọi khi quản trị viên yêu cầu hệ thống lưu báo cáo đã tạo.
+          - provideReportNameAndLocation(): Quản trị viên cung cấp tên và vị trí lưu báo cáo trong hệ thống.
+   - **PayrollReportForm**:
+       - Phương thức:
+          - requestReportCriteria(): Phương thức này yêu cầu quản trị viên cung cấp các tiêu chí cần thiết để tạo báo cáo (loại báo cáo, ngày bắt đầu và kết thúc, tên nhân viên).
+          - passCriteriaToController(): Sau khi quản trị viên cung cấp thông tin, phương thức này chuyển các tiêu chí đó đến PayrollReportController để xử lý.
+          - displayReport(): Phương thức này hiển thị báo cáo đã được tạo trên giao diện người dùng.
+          - requestReportNameAndLocation(): Phương thức này yêu cầu quản trị viên cung cấp tên và vị trí để lưu báo cáo.
+          - confirmReportSaved(): Sau khi báo cáo được lưu thành công, phương thức này xác nhận với quản trị viên rằng báo cáo đã được lưu.
+          - discardReport(): Nếu báo cáo không được lưu, phương thức này hủy bỏ báo cáo và không lưu vào cơ sở dữ liệu.
   ### 2. Maintain Purchase Order
   #### 2.1 Xác định các lớp phân tích
-   - **Boundary class**:
+  - **Boundary class**:
   - **Control class**:
   - **Entity class**:
      
