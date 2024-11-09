@@ -10,7 +10,8 @@
       - **Report:** Đại diện cho báo cáo đã được tạo ra, có các thuộc tính và phương thức liên quan đến dữ liệu báo cáo (loại báo cáo, khoảng thời gian, nhân viên).
       - **Employee:** Đại diện cho nhân viên, bao gồm các thông tin cần thiết về nhân viên trong báo cáo.
   - **Data Access Object (DAO):**
-      - **ReportDao:** Truy cập cơ sở dữ liệu để lưu trữ và lấy thông tin báo cáo (nếu có yêu cầu lưu báo cáo).   
+      - **ReportDao:** Truy cập cơ sở dữ liệu để lưu trữ và lấy thông tin báo cáo (nếu có yêu cầu lưu báo cáo).
+
   #### 1.2 Nhiệm vụ của các lóp phân tích
   - **PayrollReportForm:** Thu thập thông tin từ người dùng như loại báo cáo, khoảng thời gian và nhân viên.
   - **PayrollReportController:** Xử lý yêu cầu tạo báo cáo, kiểm tra và xác nhận dữ liệu, tạo báo cáo và yêu cầu lưu trữ nếu cần.
@@ -36,6 +37,21 @@
           - requestReportNameAndLocation(): Phương thức này yêu cầu quản trị viên cung cấp tên và vị trí để lưu báo cáo.
           - confirmReportSaved(): Sau khi báo cáo được lưu thành công, phương thức này xác nhận với quản trị viên rằng báo cáo đã được lưu.
           - discardReport(): Nếu báo cáo không được lưu, phương thức này hủy bỏ báo cáo và không lưu vào cơ sở dữ liệu.
+   - **PayrollReportController**:
+       - Phương thức:
+          - retrieveEmployeeData(): Phương thức này chịu trách nhiệm lấy dữ liệu về nhân viên từ hệ thống. Dữ liệu này sẽ được sử dụng để tạo báo cáo.
+          - createReport(): Phương thức này tạo ra báo cáo dựa trên các tiêu chí đã được cung cấp (loại báo cáo, khoảng thời gian, nhân viên). Sau khi tạo xong, báo cáo sẽ được trả lại cho PayrollReportForm để hiển thị.
+   - **Report**:
+       - Phương thức:
+          -  generateReport(): Phương thức này thực hiện việc tạo ra nội dung báo cáo dựa trên các tiêu chí được cung cấp (ví dụ: tổng số giờ làm việc hoặc lương năm nay).
+          -  setReportData(): Phương thức này lưu trữ dữ liệu của báo cáo vào đối tượng báo cáo. Dữ liệu này có thể bao gồm thông tin về nhân viên, tổng số giờ làm việc, hoặc lương trong năm.
+   - **Employee**:
+       - Phương thức:
+          - getEmployeeData(): Phương thức này lấy thông tin của nhân viên, như tên, số giờ làm việc, và các thông tin liên quan khác cần thiết cho báo cáo.
+   - **ReportDao**:
+       - Phương thức:
+          - saveReport(): Phương thức này lưu báo cáo vào cơ sở dữ liệu. Nếu báo cáo được yêu cầu lưu, dữ liệu báo cáo sẽ được ghi vào một nơi lưu trữ như cơ sở dữ liệu.
+          - getReportData(): Phương thức này truy xuất dữ liệu báo cáo từ cơ sở dữ liệu nếu cần thiết.
   ### 2. Maintain Purchase Order
   #### 2.1 Xác định các lớp phân tích
   - **Boundary class**:
