@@ -52,14 +52,38 @@
        - Phương thức:
           - saveReport(): Phương thức này lưu báo cáo vào cơ sở dữ liệu. Nếu báo cáo được yêu cầu lưu, dữ liệu báo cáo sẽ được ghi vào một nơi lưu trữ như cơ sở dữ liệu.
           - getReportData(): Phương thức này truy xuất dữ liệu báo cáo từ cơ sở dữ liệu nếu cần thiết.
-  ### 2. Maintain Purchase Order
+  ### 2. Create Employee Report
   #### 2.1 Xác định các lớp phân tích
   - **Boundary class**:
+      - **EmployeeReportForm:** Quản lý giao diện và tương tác với nhân viên khi họ yêu cầu tạo báo cáo.
   - **Control class**:
+      - **EmployeeReportController:** Xử lý logic nghiệp vụ cho việc tạo báo cáo nhân viên. Nhận yêu cầu từ nhân viên, xử lý thông tin, và tương tác với các lớp khác để tạo và lưu báo cáo.
   - **Entity class**:
-     
+      - **Report:** Đại diện cho báo cáo đã được tạo ra. Chứa các thuộc tính và phương thức liên quan đến dữ liệu của báo cáo.
+      - **Employee:** Đại diện cho nhân viên trong hệ thống. Cung cấp các thông tin cần thiết cho báo cáo như giờ làm việc, dự án, hoặc kỳ nghỉ.
+      - **ChargeNumber:** Đại diện cho mã số dự án trong hệ thống quản lý dự án. Sử dụng khi nhân viên chọn báo cáo "Total Hours Worked for a Project".
+  - **Data Access Object (DAO):**
+      - **ReportDao:** Quản lý việc lưu trữ và truy xuất dữ liệu báo cáo từ cơ sở dữ liệu.
+      - **ProjectDatabaseDao:** Lấy danh sách các mã số dự án từ cơ sở dữ liệu quản lý dự án khi nhân viên yêu cầu báo cáo theo dự án.   
   #### 2.2 Nhiệm vụ của các lóp phân tích
+  - **EmployeeReportForm:**
+     - Hiển thị các tùy chọn và tiêu chí để nhân viên chọn loại báo cáo.
+     - Yêu cầu nhân viên nhập thông tin về ngày bắt đầu và ngày kết thúc của báo cáo.
+  - **EmployeeReportController:**
+     -  Xử lý logic nghiệp vụ cho việc tạo báo cáo dựa trên loại báo cáo và các tiêu chí đã nhập.
+     - Kiểm tra và điều phối việc lấy thông tin về nhân viên hoặc dự án khi cần thiết.
+  - **Report:**
+     - Chứa các phương thức tạo và lưu trữ thông tin báo cáo như "Total Hours Worked", "Vacation/Sick Leave", "Total Pay Year-to-Date".
+  - **Employee:**
+     - Cung cấp dữ liệu về thời gian làm việc, dự án tham gia, và các kỳ nghỉ của nhân viên.
+  - **ChargeNumber:**
+     - Lấy và cung cấp danh sách mã số dự án từ ProjectDatabaseDao khi báo cáo theo dự án được yêu cầu.
+  - **ReportDao:**
+     - Truy xuất và lưu dữ liệu báo cáo vào cơ sở dữ liệu khi nhân viên chọn lưu báo cáo.
+  - **ProjectDatabaseDao:**
+     - Lấy thông tin mã số dự án từ cơ sở dữ liệu quản lý dự án khi cần hiển thị các mã số dự án có sẵn cho nhân viên.
   #### 2.3 Biểu đồ Sequence
+  ![Diagram](https://www.planttext.com/api/plantuml/png/b5HBZXCn4DttAKfPWJHS02beH0Oq28GG8B6kj9s96RVT-1EfJy0n40iq4XjOi4eMiuZ4FVe4SmNAxdR_w8aW2ySflvUgz_owxmwtvzQXSRwG6UPE6tXMb59Nd6SbbKKkIbGE5gdwbfVQkEVQ50j02s5p2hZIoXaj9JSHtlySanfmX3JR-V-CWFdvLbiqL_orBzQfrQ0mr-m2TSJHz_ZuZT4VUKxd3jTeUSAbyjCiMoxXvRO-V17WwlrN3TNnkuUytj_ujh0-qfA7PRdCqhpmw4cq2nwJna-UMmUEK8QZus0QrV6SS1sdnpO8S5N9pu0Hnvu1AWOFTEc4LYWVGjcC27cK3ghHFjEVjEm4Irrf1k6u4TYrxwyfWD7Q3X967bnYiE9LlVzM0QiFFq2A-l3PZ-MZTF1Y0ultsg64I-sDXG_QN7C66qeR9cCN82nOBcdBMGRq6Kn1CtN-Hq-S4Np7nqfjPFMugH1YUQDeI79JR-QuuuwjMHV2bXAh2JuOqIKnS6TiVXVLJAuZOE_tEHam8N75icmytIWYhHqyrIWVEC4tgIVqQfWu215de5KVWfCcf1GEnCSC_Fxf_oVr5dV_adc51OyXbph7aF8OcPPt8jT_yRecz3I7Y-dRDrQ5ykmfpShQ5y7SeEJLHb2rHGTPB1foMHzkge4ZgjxVUhZU7d-fAv31hVRHQAz5wSI-9qjq0JaQbiJ7G9pJ6jxRVm000F__0m00)
   #### 2.4 Biểu đồ lớp
   #### 2.5 Giải thích về biểu đồ lớp
   ### 3. Create Administrative Report
