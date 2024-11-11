@@ -119,16 +119,65 @@
 - **ProjectDatabaseDao**:
     - Phương thức:
         - retrieveChargeNumbers(): Lấy danh sách các số charge dự án từ cơ sở dữ liệu để phục vụ cho việc tạo báo cáo nếu báo cáo yêu cầu dữ liệu về các dự án.
-  ### 3. Create Administrative Report
+  ### 3. Close Registration
   #### 3.1 Xác định các lớp phân tích
-   - **Boundary class**:
-  - **Control class**:
-  - **Entity class**:
+- **Boundary class**:
+    - **CloseRegistrationForm :** Quản lý giao diện người dùng cho Registrar, cho phép Registrar yêu cầu đóng đăng ký và hiển thị các thông báo về tình trạng các khóa học (đủ số sinh viên hoặc bị hủy).
+    - **BillingSystemForm:** Quản lý giao diện người dùng cho hệ thống thanh toán, cho phép hệ thống thanh toán nhận thông tin về học phí của các sinh viên và xử lý giao dịch thanh toán cho các khóa học không bị hủy.
+- **Control class**:
+    - **CloseRegistrationController:** Xử lý logic nghiệp vụ cho việc đóng đăng ký, kiểm tra xem mỗi khóa học có đủ số lượng sinh viên và giảng viên hay không, xử lý việc hủy các khóa học không đủ sinh viên và thông báo cho hệ thống thanh toán về các sinh viên trong các khóa học hợp lệ.
+- **Entity class**:
+    - **CourseOffering (Entity):** Đại diện cho khóa học và thông tin liên quan như giảng viên và số lượng sinh viên đăng ký.
+    - **Student (Entity):** Đại diện cho sinh viên đăng ký và lưu trữ thông tin học phí.
+- **Data Access Object (DAO):**
+    - **CourseOfferingDao:** Truy cập cơ sở dữ liệu để lấy thông tin các khóa học, bao gồm việc kiểm tra số lượng sinh viên, giảng viên, và trạng thái của khóa học.
+    - **BillingDao:** Truy cập cơ sở dữ liệu để tính toán học phí cho sinh viên trong các khóa học hợp lệ và gửi giao dịch thanh toán cho hệ thống thanh toán.
      
   #### 3.2 Nhiệm vụ của các lóp phân tích
+- **CloseRegistrationForm:** Hiển thị giao diện yêu cầu đóng đăng ký và thông báo tình trạng các khóa học.
+- **BillingSystemForm:** Hiển thị giao diện thanh toán và xử lý giao dịch học phí cho các khóa học không bị hủy.
+- **CloseRegistrationController:** Xử lý logic đóng đăng ký, kiểm tra khóa học hợp lệ, hủy khóa học không đủ sinh viên, và thông báo cho hệ thống thanh toán.
+- **CourseOffering:** Đại diện cho khóa học, kiểm tra tính hợp lệ của khóa học.
+- **Student:** Lưu trữ thông tin sinh viên và học phí cho các khóa học hợp lệ.
+- **CourseOfferingDao:** Truy xuất và cập nhật thông tin khóa học trong cơ sở dữ liệu.
+- **BillingDao:** Tính toán học phí và gửi giao dịch thanh toán cho sinh viên.
   #### 3.3 Biểu đồ Sequence
+  ![Diagram](https://www.planttext.com/api/plantuml/png/X5HBJWCn3Dtd5DQiO85OiEi2LHGXiG69di3DUDg8D874KzIpiU18N05F9lFfz4CtpUUz-FdPdj_ldtba35nlhKBDFi0RhKtaW04mGj7lYdpzOAmrRhtSHwPjWkGJQ8yAfLQ-TYM6FHGBwoDrJx3nxic7RT6mceNItd7mzWHkqTvO2WazR1KvDjmyxUiGwRMgA4ZmZ1eVzSWbrwMi4oIlLOcCAumqVUSH_Ocdv7J4oFbsq66hrE3TpNrA4MRYvsTDaO4zw2PD2ACyLG89UCXGA4jofS0kyKRun9x8JN4v6DeHw7G9Fjz6TOoU2X1k7Tmnys9OuIqsfD_1L1rp8_uWWoMKHEuWjkvF5VmJVeVMb4qbhzBgrhZqVwqKMeRdFfY9BLI1_0w53ZNgtCrIO9MRrxZA9-88UaPMHv5Ik2X38UM0aXYDZUT3vtcPmOjdK-q1PKXugc8i81Ec6cHJ6McPJaGWJMP7fI8h5XoOaNqweUcuRkWqsSpDX8iLwcJaQ3hnRTkQOk-qKV8eB8xw63w2rnHZFmV314cXDlxh4DqCGXr8V4EkevfBgER3zGS00F__0m00)
   #### 3.4 Biểu đồ lớp
+  ![Diagram](https://www.planttext.com/api/plantuml/png/d5LBRjim4Dth50DjQXV9ebkZ29BOBH2Wg8kuw7vCZMos56cGmmP6cvDrqIFr2gN-egmOHhJJl3U_Dnpotv-_juxHiYzKyWPMb4jDm7i2eT0vSe0wA_-b1KiAMHhjzlBWai2-DrvdQ8yjDpcW-84xWhH5KlYLG0t3KXb7ZxIJZcqLvwEnHOMNdnYZitc3kBrv6W8RHlQkWf-JBlgzL4hgtURec8eeSkdVe2jYbCfreG_M27Bk2nuBqjo4V2vRMnhDrgWwUDzNOpxRLiDHP2zexYSgcI7JqdZhQ9tdP4ET7QmDo_mOzTPX0hKWLJiEI_-WMVB4J6fxL7gKjA-sCZza2v2Q8zjdB6W1eOb0RolqnJhViC-2W6xeKG4FEf2zO6CZp5KZ74MIxbifnco-WAqnAXvlaw4VQlqV5zaO9wfaBwiJHm78ZDygQW3IrQYoMefGqgSme_UnC3UzjYjaX3jH7XfORx-JO9YjxjRpKxK7p9SbNw7fEjeHnw0hbNYXdFBpX_xWD3iHJUvg9FFqmWnB4AY43pjENpkvPh7Gyv5yemMAoLU0HRW7kFKPdD77uLK2M-8d8js9E7rJN5__lZcxRGlmfVVfJL1vHkQMUovSdUzaNfTw3lHzNRBWrjuEbwSRT5tDW2mA3kudRKmdB527qzjfs17RzLl0Fhm7YiOH8NsN1YQaRzC1jrukbzoIpihtvJy0003__mC0)
   #### 3.5 Giải thích về biểu đồ lớp
+  - **CloseRegistrationForm**:
+    - Phương thức:
+        - closeRegistration(): Đóng đăng ký cho các khóa học, kiểm tra điều kiện để xác nhận khóa học hợp lệ hoặc bị hủy.
+        - showRegistrationStatus(): Hiển thị trạng thái của các khóa học, bao gồm việc khóa học có đủ sinh viên và giảng viên hay không.
+
+- **BillingSystemForm**:
+    - Phương thức:
+        - showBillingDetails(): Hiển thị thông tin về học phí của sinh viên trong các khóa học hợp lệ.
+        - processPayment(): Xử lý giao dịch thanh toán cho sinh viên, truyền thông tin học phí và nhận phản hồi từ hệ thống thanh toán.
+
+- **CloseRegistrationController**:
+    - Phương thức:
+        - closeRegistration(): Điều phối quá trình đóng đăng ký, kiểm tra tính hợp lệ của các khóa học và hủy các khóa học không hợp lệ.
+        - validateCourseOffering(): Kiểm tra các khóa học xem có đủ số sinh viên và giảng viên không, nếu không đủ sẽ hủy khóa học.
+        - notifyBillingSystem(): Thông báo cho hệ thống thanh toán về các khóa học hợp lệ và gửi thông tin học phí của sinh viên để thanh toán.
+        - cancelCourse(): Hủy các khóa học không đủ số sinh viên và giảng viên, và cập nhật trạng thái khóa học trong cơ sở dữ liệu.
+
+- **CourseOffering (Entity)**:
+    - Phương thức:
+        - isValid(): Kiểm tra tính hợp lệ của khóa học, xác nhận số lượng sinh viên và giảng viên có đủ để giữ khóa học mở.
+- **Student (Entity)**:
+    - Phương thức:
+        - getTuitionFee(): Tính toán học phí của sinh viên dựa trên các khóa học mà họ tham gia, bao gồm việc áp dụng các khoản giảm giá hoặc tăng thêm.
+- **CourseOfferingDao (DAO)**:
+    - Phương thức:
+        - getCourseOfferings(): Truy xuất danh sách các khóa học từ cơ sở dữ liệu, bao gồm thông tin về số lượng sinh viên và giảng viên.
+        - updateCourseStatus(courseId, status): Cập nhật trạng thái của khóa học trong cơ sở dữ liệu (ví dụ: "đã đóng" hoặc "bị hủy").
+- **BillingDao (DAO)**:
+    - Phương thức:
+        - calculateTuitionFee(studentId): Tính toán học phí mà sinh viên phải trả cho các khóa học hợp lệ mà họ đã đăng ký.
+        - processPayment(studentId, amount): Xử lý giao dịch thanh toán học phí cho sinh viên, bao gồm việc gửi thông tin thanh toán và cập nhật trạng thái giao dịch.
+
   ### 4. Maintaiin Employee info
   #### 4.1 Xác định các lớp phân tích
   - **Boundary class**:
