@@ -85,7 +85,40 @@
   #### 2.3 Biểu đồ Sequence
   ![Diagram](https://www.planttext.com/api/plantuml/png/b5HBRjH04DttAKgp0YbS06bGn0GK2HGXG69TOzTaJDhTfhizaa_0YZCW5YWI6rYm6Y-o68bx-0Iv0jLjjpyJ9u9PUEogLrslNZtxjhuvjGwDAtCfC77Qm8kyaBeY4cAjIvMYgM0HOs-fqCQzr2PV05hmDoBHoXajZq6hDYp91EZmA4YvpF6XBIvaszi-4qyAkPvFpAwsQ2xfeipNyUnHGAJeS8sMulbdg0E8_qUvDqP_f8IJRI22OlYv4CiblDeszTSCNBF_fg4w_2WXQVRNPHTO7_YI-CjoAI99UF8ig09FUQPF9La7Zb66q16OTigGPrnVCs1R1BYge1DWjcHF05KAZtJXCgrGFeQYfGX961fKE_LCVvvbbwMnAtF879aC-_R3HZmOhUqXdl9eNrwAryt-UmLfK_y4cJNrvt8wFae75yt-XXLYpRueMBpN3YMSwz9O-A3D5QMmONDXb7WXW7yZ3ioeLpyeuan6EvhEQKFLW3iUWwjAevWYQwatSxNJZfrKPvaj95P7U2z3RpvVEoFoEv9tb-6nzwjiGmdhCIqYbGenPJSnI2S7nPZtyX6-DJoZLsE_WJTu2beD5dXGXEZ1qV310Nz-bV_ZUOkxVt6ymfo2nQLEq7iysAIhUy3LT-hw9lmk-yKCxLkfV7WsorpZTs6EA6kroJZQeVrOQH3alAclgv4YAlZ_QdluhIv1UhMw5wDRYzAn-XulyG8ID6aSFXZYbA_-q_mN003__mC0)
   #### 2.4 Biểu đồ lớp
+   ![Diagram](https://www.planttext.com/api/plantuml/png/b5J1Ri8m3BttAonEGu8Vg2Q4nBRJXAQ1j7FMMf2jRJed8A5fNxR3Fcc_iBX9Q5eAOXTG7FizlsUdlzy_Ssq4cLrP95aXj8RxiYxK0V4PQqNcGL49dma047xiK1iNNXzgl1cdi5SoZoxlX44z45zi1MrmkIjVaUBhsX8kI1eaATPgeIf3gYYwERdKTI4EZdS0UoNsU7ffgp91UU_YAnaKsH87gOOaxZ5aMLc2CSAPSp92AzRZPrv32XxGdySX4AF6PZHcFKfjRkFeZDDrgukQlu0rWKgKcCBAmbMR2HGg4qQgAaHEnBgoHjgKZkCBwHnjLe27bmB_SWYhl1VmuZisJBEexHHY4QnXWnLIQrCqdmtwJRf38sJH-E3xEHcIwrpcSSUn1NpUgXtf5qNlQDDaPJn7Vu9zYhXXHzCLr1BKfDumCyikBtF461VKUBb2kHrhnxjMtDshqDWRT6VNtUu44AV6xzQHuidr6E2ENF_PF0isy0MOJcVdtqmA8tx845x1A3cRoZX-7MsLUqFWL5zLnP9i8PjtNTc09RO-609ksb0vIqP9ozBjj4CuWCdPdLswH3AtRuk_jty0003__mC0)
   #### 2.5 Giải thích về biểu đồ lớp
+  - **EmployeeReportForm**:
+    - Phương thức:
+        - requestReportType(): Phương thức này yêu cầu người dùng chọn loại báo cáo cần tạo, ví dụ: báo cáo về tổng số giờ làm việc hoặc báo cáo về lương trong năm.
+        - requestDates(): Phương thức này yêu cầu người dùng nhập khoảng thời gian báo cáo, gồm ngày bắt đầu và kết thúc.
+        - requestChargeNumber(): Nếu loại báo cáo yêu cầu thông tin dự án, phương thức này yêu cầu người dùng nhập số charge dự án.
+        - passCriteriaToController(): Chuyển các tiêu chí đã nhập từ người dùng (loại báo cáo, thời gian, số charge dự án) đến controller để xử lý.
+        - displayReport(): Phương thức này hiển thị báo cáo đã được tạo từ controller trên giao diện người dùng.
+        - requestSaveReport(): Yêu cầu người dùng cung cấp tên và vị trí lưu báo cáo.
+        - discardReport(): Nếu người dùng quyết định không lưu báo cáo, phương thức này hủy bỏ báo cáo và không lưu vào cơ sở dữ liệu.
+- **EmployeeReportController**:
+    - Phương thức:
+        - retrieveEmployeeData(): Lấy dữ liệu về nhân viên từ hệ thống (ví dụ: tên, giờ làm việc, v.v.) để sử dụng trong báo cáo.
+        - createReport(criteria): Tạo báo cáo dựa trên các tiêu chí đã cung cấp (loại báo cáo, khoảng thời gian, nhân viên, số charge dự án). Sau khi tạo báo cáo, gửi lại kết quả cho form để hiển thị cho người dùng.
+        - retrieveChargeNumbers(): Lấy danh sách số charge của các dự án từ cơ sở dữ liệu nếu báo cáo yêu cầu thông tin về các dự án.
+- **Report**:
+    - Phương thức:
+        - `generateReport()`: Tạo nội dung báo cáo dựa trên các tiêu chí đã nhập từ người dùng (ví dụ: tổng số giờ làm việc cho một dự án hoặc tổng số giờ làm việc của nhân viên).
+        - `getReportDetails()`: Trả về chi tiết của báo cáo (có thể bao gồm thông tin về nhân viên, số giờ làm việc, lương, dự án, v.v.).
+- **Employee**:
+    - Phương thức:
+        - getEmployeeData(): Lấy thông tin về nhân viên, ví dụ: tên nhân viên, số giờ làm việc, v.v., để báo cáo có thể tính toán và hiển thị các thông tin liên quan đến nhân viên trong báo cáo.
+
+- **ChargeNumber**:
+    - Phương thức:
+        - getChargeNumberDetails(): Lấy thông tin chi tiết về số charge của dự án mà nhân viên tham gia. Thông tin này sẽ được sử dụng trong báo cáo nếu báo cáo yêu cầu thông tin liên quan đến các dự án.
+- **ReportDao**:
+    - Phương thức:
+        - saveReportToDatabase(report): Lưu báo cáo vào cơ sở dữ liệu. Khi người dùng yêu cầu lưu báo cáo, phương thức này sẽ lưu dữ liệu báo cáo vào hệ thống lưu trữ.
+        - retrieveReportData(): Lấy dữ liệu báo cáo từ cơ sở dữ liệu, ví dụ khi cần truy xuất lại báo cáo đã lưu.
+- **ProjectDatabaseDao**:
+    - Phương thức:
+        - retrieveChargeNumbers(): Lấy danh sách các số charge dự án từ cơ sở dữ liệu để phục vụ cho việc tạo báo cáo nếu báo cáo yêu cầu dữ liệu về các dự án.
   ### 3. Create Administrative Report
   #### 3.1 Xác định các lớp phân tích
    - **Boundary class**:
