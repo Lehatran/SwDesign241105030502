@@ -181,13 +181,44 @@
   ### 4. Maintaiin Employee info
   #### 4.1 Xác định các lớp phân tích
   - **Boundary class**:
+       - **EmployeeUI:** Giao diện duy nhất cho Quản trị viên, hiển thị các chức năng Thêm, Sửa, Xóa nhân viên và thu thập thông tin từ người dùng.
   - **Control class**:
+      - **EmployeeController**: EmployeeController: Điều khiển các thao tác thêm, sửa, xóa nhân viên.
   - **Entity class**:
-     
+      - **Employee:** Lớp cơ bản chứa thông tin chung của nhân viên (mã, tên, địa chỉ, số an sinh xã hội,...).
+  - **Data Access Object (DAO):**
+      - **EmployeeDatabase: Lưu trữ và quản lý dữ liệu nhân viên, thực hiện thêm, lấy, cập nhật và đánh dấu xóa.
   #### 4.2 Nhiệm vụ của các lóp phân tích
+  - **MaintainEmployeeBoundary:** Giao diện để Payroll Administrator tương tác với hệ thống nhằm thực hiện các chức năng thêm, sửa, và xóa thông tin nhân viên.
+  - **EmployeeController:** Xử lý logic nghiệp vụ cho các yêu cầu từ Payroll Administrator về thêm, cập nhật, và xóa thông tin nhân viên.
+  - **Employee:**Đại diện cho một nhân viên, lưu trữ thông tin chung như mã nhân viên, tên, địa chỉ, số an sinh xã hội, v.v.
+  - **EmployeeDatabase (DAO)**: Lớp quản lý dữ liệu nhân viên. Nhiệm vụ chính của EmployeeDatabase là:Thêm, lấy, cập nhật và đánh dấu xóa các bản ghi nhân viên trong hệ thống.
   #### 4.3 Biểu đồ Sequence
+  ![Diagram](https://www.planttext.com/api/plantuml/png/p5LBJiCm4Dtx55PN8D4BH0egQa3g1Y6g7c0QJwk0OnVR0ULiB3WILy3Enp5fsWGa93PHCddFR-RDY_Bv_h7G1fGfSauWDLBH1oYLvFo6vPd8j57WYg1fLI1aAml1G9NqDZzmMI9kLYILmbYEBothPuwAe32PwS24WO4jQFILf2aG4iTMW_aND8u9gKJf_3fGY-WQEQQ6paBqZ7I84D-r4b5Wh2rVk3ukoJ4gv4PqgH0CKe5lNLjo-sJLFJKajBD4LCChUYriRZgz5aZdt-JkhKuBhevWLrIXAPJGlhvYWVI9GGUmuOGzEmVGpaEBgjoFQ9Bf0uUoiY40kuLj3imPD7rdFSAKjHKLvSZDbJMdViMI2SliThD7Ct3Oo7B2XloqcTX9bOF9f1YDKjyf5y2H49qOV3H6ZPJzAdTPlxsJGpKaXRhWPafiraMQejOqjnVOuqXsT0_jmfFOJFmeF3t2bF2mYd9st_ynBsxgHtmfK9jw14iPNcWzUkFsUSgWjyiQuIaJF3r96NCo1_Ly9rNIy7xdPdBMZhyBx085St_9Bm000F__0m00)
   #### 4.4 Biểu đồ lớp
+  ![Diagram](https://www.planttext.com/api/plantuml/png/n5HBJiCm4Dtd5DvH97g1B50b0X8IOa7X0DDusbZu4tacBH7YP2mu4bTWaZPfKafXHrRnlEVdcNbZVxv_p8WXSkLiafof39V6e-82LMw124c1rytQH1M3bRNnBKmrCRf4lfQehbrfGutuTAjU4wKKQDs59XeOqfwHoUeyLUjWT4EiIe6nv-BkvrQdSXHVx72TdTBGQF5dZOxuTfZhLV0iHLcCVynPnFuvvJRHgJgWjp4F3bCrvsZyQaHwhCin87L691h5AEG6x1ppAXgkxoktm3WYCBnagAkSJV2oTMa3RCyDCWxnE5GMmUCHhI9KqTOFqgGXcy12h8UHF3XdY4JsaDiet1bdU5j_qz4LydNVbidUBObdo60iDS6X7NilEyAlpdqpf04NG5jZf8JrTq_tIgEaJdZVGIU6RIJQ3PM3-7mJn0oPBMdQYQdghtf42wrlXIb9BP0tY7xu0CWD7zpjwVJosFL9MwigRtB9bP8ZZE56eJlmi1emHtZVqrGHXuXQalzDSx17AiK8EPFQ62wIP8PUo_ls1G00__y30000)
   #### 4.5 Giải thích về biểu đồ lớp
+  - **EmployeeUI**
+      - Phương thức:
+          -  addEmployee(data: EmployeeData): void: Nhận dữ liệu thêm nhân viên từ người dùng và chuyển cho EmployeeController.
+          -  updateEmployee(employeeId, updatedData): Nhận yêu cầu cập nhật thông tin nhân viên và chuyển cho EmployeeController.
+          -  deleteEmployee(employeeId): Nhận yêu cầu xóa nhân viên và chuyển cho EmployeeController.
+  - **EmployeeController**:
+      - Phương thức:
+          - addEmployee(data): Tạo nhân viên mới từ dữ liệu, lưu vào EmployeeDatabase, và trả về employeeId.
+          - updateEmployee(employeeId, updatedData): Lấy thông tin, cập nhật nhân viên từ updatedData, và lưu vào EmployeeDatabase.
+          - deleteEmployee(employeeId): Lấy thông tin nhân viên, xác nhận xóa và đánh dấu xóa trong EmployeeDatabase.
+  - **Employee**:
+      - Phương thức:
+          - getEmployeeId(): Trả về mã nhân viên.
+          - getDetails(): Trả về thông tin chi tiết của nhân viên.
+          - updateDetails(updatedData): Cập nhật thông tin nhân viên.
+  - **EmployeeDatabase**:
+      - Phương thức:
+          - saveEmployee(employee): Lưu nhân viên mới và trả về employeeId.
+          - getEmployee(employeeId): Lấy thông tin nhân viên theo employeeId.
+          - updateEmployee(employee): Cập nhật thông tin nhân viên trong cơ sở dữ liệu.
+          - markForDeletion(employeeId): Đánh dấu nhân viên để xóa.
   ### 5. Run Payroll
   #### 5.1 Xác định các lớp phân tích
   - **Boundary class**:
