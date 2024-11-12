@@ -222,11 +222,35 @@
   ### 5. Run Payroll
   #### 5.1 Xác định các lớp phân tích
   - **Boundary class**:
+      - **SystemClock:** Kích hoạt quá trình chạy lương theo lịch (vào mỗi Thứ Sáu và ngày làm việc cuối của tháng).
+      - **Printer:** Chịu trách nhiệm in phiếu lương cho nhân viên có phương thức nhận lương là qua thư hoặc nhận trực tiếp.
+      - **BankSystem:** Thực hiện các giao dịch chuyển khoản trực tiếp cho nhân viên có phương thức nhận lương là chuyển khoản ngân hàng.
   - **Control class**:
+      - PayrollController:
+      - Điều phối quy trình chạy lương bao gồm:
+         - Lấy danh sách nhân viên cần được trả lương vào ngày hiện tại.
+         - Tính toán lương của từng nhân viên dựa trên phiếu chấm công, thông tin nhân viên, đơn hàng mua, và các khoản khấu trừ hợp pháp.
+         - Gửi phiếu lương đến Printer nếu phương thức nhận lương là thư hoặc nhận trực tiếp.
+         - Gửi yêu cầu giao dịch đến BankSystem nếu phương thức nhận lương là chuyển khoản.
   - **Entity class**:
-     
+      - Employee: Đại diện cho nhân viên, chứa thông tin cần thiết để tính lương như mức lương, loại nhân viên, các khoản lợi ích, và phương thức nhận lương (thư, nhận trực tiếp, hoặc chuyển khoản).
+      - TimeCard: Đại diện cho phiếu chấm công, chứa thông tin về số giờ làm việc của nhân viên trong kỳ lương (áp dụng cho nhân viên trả lương theo giờ).
+      - PurchaseOrder: Đại diện cho đơn hàng mua (áp dụng cho nhân viên hưởng lương theo hoa hồng), chứa thông tin về các đơn hàng mà nhân viên được hưởng hoa hồng.
+      - Paycheck: Lớp này đại diện cho phiếu lương cuối cùng của nhân viên sau khi tính toán xong, bao gồm tổng lương và các khoản khấu trừ.
+  - **Data Access Object (DAO)**
+      - EmployeeDatabase: Quản lý dữ liệu nhân viên và cung cấp thông tin về nhân viên, bao gồm phiếu chấm công và đơn hàng, từ cơ sở dữ liệu phục vụ cho việc tính lương.
   #### 5.2 Nhiệm vụ của các lóp phân tích
+  - SystemClock (Boundary): Tự động kích hoạt PayrollController để bắt đầu chạy lương vào thời gian đã được lên lịch.
+  - Printer (Boundary): In phiếu lương cho các nhân viên có phương thức nhận lương là qua thư hoặc nhận trực tiếp.
+  - BankSystem (Boundary): Thực hiện giao dịch chuyển khoản khi nhân viên chọn phương thức nhận lương qua chuyển khoản.
+  - PayrollController (Control): Điều phối toàn bộ quy trình chạy lương, từ lấy thông tin nhân viên, tính toán lương đến xử lý thanh toán qua in phiếu hoặc chuyển khoản ngân hàng.
+  - Employee (Entity): Cung cấp thông tin nhân viên để tính lương, bao gồm mức lương, lợi ích, và phương thức nhận lương.
+  - TimeCard (Entity): Cung cấp thông tin giờ làm việc của nhân viên (dành cho nhân viên hưởng lương theo giờ).
+  - PurchaseOrder (Entity): Cung cấp thông tin về đơn hàng cho nhân viên hưởng lương theo hoa hồng.
+  - Paycheck (Entity): Lưu trữ thông tin phiếu lương sau khi tính toán xong.
+  - EmployeeDatabase (DAO): Truy cập và quản lý dữ liệu nhân viên từ cơ sở dữ liệu để phục vụ cho việc tính lương.
   #### 5.3 Biểu đồ Sequence
+  ![Diagram](https://www.planttext.com/api/plantuml/png/n5HBJiCm4Dtd5DvH97g1B50b0X8IOa7X0DDusbZu4tacBH7YP2mu4bTWaZPfKafXHrRnlEVdcNbZVxv_p8WXSkLiafof39V6e-82LMw124c1rytQH1M3bRNnBKmrCRf4lfQehbrfGutuTAjU4wKKQDs59XeOqfwHoUeyLUjWT4EiIe6nv-BkvrQdSXHVx72TdTBGQF5dZOxuTfZhLV0iHLcCVynPnFuvvJRHgJgWjp4F3bCrvsZyQaHwhCin87L691h5AEG6x1ppAXgkxoktm3WYCBnagAkSJV2oTMa3RCyDCWxnE5GMmUCHhI9KqTOFqgGXcy12h8UHF3XdY4JsaDiet1bdU5j_qz4LydNVbidUBObdo60iDS6X7NilEyAlpdqpf04NG5jZf8JrTq_tIgEaJdZVGIU6RIJQ3PM3-7mJn0oPBMdQYQdghtf42wrlXIb9BP0tY7xu0CWD7zpjwVJosFL9MwigRtB9bP8ZZE56eJlmi1emHtZVqrGHXuXQalzDSx17AiK8EPFQ62wIP8PUo_ls1G00__y30000)
   #### 5.4 Biểu đồ lớp
   #### 5.5 Giải thích về biểu đồ lớp
   ### 6. Login
