@@ -240,27 +240,91 @@
   - **Data Access Object (DAO)**
       - EmployeeDatabase: Quản lý dữ liệu nhân viên và cung cấp thông tin về nhân viên, bao gồm phiếu chấm công và đơn hàng, từ cơ sở dữ liệu phục vụ cho việc tính lương.
   #### 5.2 Nhiệm vụ của các lóp phân tích
-  - SystemClock (Boundary): Tự động kích hoạt PayrollController để bắt đầu chạy lương vào thời gian đã được lên lịch.
-  - Printer (Boundary): In phiếu lương cho các nhân viên có phương thức nhận lương là qua thư hoặc nhận trực tiếp.
-  - BankSystem (Boundary): Thực hiện giao dịch chuyển khoản khi nhân viên chọn phương thức nhận lương qua chuyển khoản.
-  - PayrollController (Control): Điều phối toàn bộ quy trình chạy lương, từ lấy thông tin nhân viên, tính toán lương đến xử lý thanh toán qua in phiếu hoặc chuyển khoản ngân hàng.
-  - Employee (Entity): Cung cấp thông tin nhân viên để tính lương, bao gồm mức lương, lợi ích, và phương thức nhận lương.
-  - TimeCard (Entity): Cung cấp thông tin giờ làm việc của nhân viên (dành cho nhân viên hưởng lương theo giờ).
-  - PurchaseOrder (Entity): Cung cấp thông tin về đơn hàng cho nhân viên hưởng lương theo hoa hồng.
-  - Paycheck (Entity): Lưu trữ thông tin phiếu lương sau khi tính toán xong.
-  - EmployeeDatabase (DAO): Truy cập và quản lý dữ liệu nhân viên từ cơ sở dữ liệu để phục vụ cho việc tính lương.
+  - **SystemClock (Boundary)**: Tự động kích hoạt PayrollController để bắt đầu chạy lương vào thời gian đã được lên lịch.
+  - **Printer (Boundary)**: In phiếu lương cho các nhân viên có phương thức nhận lương là qua thư hoặc nhận trực tiếp.
+  - **BankSystem (Boundary)**: Thực hiện giao dịch chuyển khoản khi nhân viên chọn phương thức nhận lương qua chuyển khoản.
+  - **PayrollController (Control)**: Điều phối toàn bộ quy trình chạy lương, từ lấy thông tin nhân viên, tính toán lương đến xử lý thanh toán qua in phiếu hoặc chuyển khoản ngân hàng.
+  - **Employee (Entity)**: Cung cấp thông tin nhân viên để tính lương, bao gồm mức lương, lợi ích, và phương thức nhận lương.
+  - **TimeCard (Entity)**: Cung cấp thông tin giờ làm việc của nhân viên (dành cho nhân viên hưởng lương theo giờ).
+  - **PurchaseOrder (Entity)**: Cung cấp thông tin về đơn hàng cho nhân viên hưởng lương theo hoa hồng.
+  - **Paycheck (Entity)**: Lưu trữ thông tin phiếu lương sau khi tính toán xong.
+  - **EmployeeDatabase (DAO)**: Truy cập và quản lý dữ liệu nhân viên từ cơ sở dữ liệu để phục vụ cho việc tính lương.
   #### 5.3 Biểu đồ Sequence
   ![Diagram](https://www.planttext.com/api/plantuml/png/n5HBJiCm4Dtd5DvH97g1B50b0X8IOa7X0DDusbZu4tacBH7YP2mu4bTWaZPfKafXHrRnlEVdcNbZVxv_p8WXSkLiafof39V6e-82LMw124c1rytQH1M3bRNnBKmrCRf4lfQehbrfGutuTAjU4wKKQDs59XeOqfwHoUeyLUjWT4EiIe6nv-BkvrQdSXHVx72TdTBGQF5dZOxuTfZhLV0iHLcCVynPnFuvvJRHgJgWjp4F3bCrvsZyQaHwhCin87L691h5AEG6x1ppAXgkxoktm3WYCBnagAkSJV2oTMa3RCyDCWxnE5GMmUCHhI9KqTOFqgGXcy12h8UHF3XdY4JsaDiet1bdU5j_qz4LydNVbidUBObdo60iDS6X7NilEyAlpdqpf04NG5jZf8JrTq_tIgEaJdZVGIU6RIJQ3PM3-7mJn0oPBMdQYQdghtf42wrlXIb9BP0tY7xu0CWD7zpjwVJosFL9MwigRtB9bP8ZZE56eJlmi1emHtZVqrGHXuXQalzDSx17AiK8EPFQ62wIP8PUo_ls1G00__y30000)
   #### 5.4 Biểu đồ lớp
+  ![Diagram](https://www.planttext.com/api/plantuml/png/Z5JDRjim3BxxANHCWVO5XA5ecsp0W1KjrW4zApAN294bWwG314EVR8SzqbvXj6FMzlBN71oBuiVl8qtox-y_TyGEkQbYKVZeYCpBZXYgUSn-OtuLflqnXjKAy7kJdjqESuopg-9D_Pyn90PKtxezYfjVWz_Cwlx56ZMDa0ykRVPi0pXx85e41CyBg3C5FX-Z5pJFYTl_GSSnpTt52lXpLSUy0w0l6VNMDuYGUE4Oh6cVlRjtqJTHpk8uur31t65fpO_-xThK3Vgr8tZ24b0qZe_N1degQvJqQiXZI4ClLRt2lWgLr7DlJAwIE2-IMLhjBUIYmvqrPMwM4VQs9IJu6PYcdbB4Ij9x15xdSderAiW2s8L8Cz6upQ4Sz6cwP_MjSuFqcd43Owk4LxI6_mzzm3QfuLbAdwig48MSxglS99wMGgWdeJxCttyVfNP7OfTGDfw5cARs16ttJssJ7ZfWUo--OxSKgShwuKQrvbiW_gJEjzeRMpWtXuECySJVtDmUcIchuqJ5uMKBESZ16kVRKOPB2F54aEYm1PAYTX_e1EIz2SUGTYGluARjD0Rdpd81hSrWZKUGUfzqx1UXDGIf9ACrF-4-sdwAABkz9tgwnLSKTs9jD_C_0000__y30000)
   #### 5.5 Giải thích về biểu đồ lớp
+- **SystemClock:**
+    - Phương thức:
+        - triggerRunPayroll(): là phương thức khởi động quy trình tính lương, kích hoạt lớp PayrollController.
+- **Printer:**
+    - Phương thức:
+        - printPaycheck(paycheck: Paycheck): Nhận thông tin phiếu lương từ PayrollController và in phiếu lương theo yêu cầu.
+- **BankSystem:**
+    - Phương thức:
+        - processDirectDeposit(paycheck: Paycheck): Nhận yêu cầu giao dịch từ PayrollController và xử lý thanh toán qua ngân hàng.
+- **PayrollController:**
+    - Phương thức:
+        - triggerRunPayroll() được kích hoạt bởi SystemClock, và từ đó lớp này sẽ bắt đầu quá trình tính lương.
+        - getEmployeesForPayroll(currentDate: Date): Truy xuất danh sách các nhân viên cần được trả lương vào ngày hiện tại từ EmployeeDatabase.
+        - calculatePay(timeCard: TimeCard, purchaseOrder: PurchaseOrder, employee: Employee): Paycheck: Tính toán lương dựa trên thông tin từ các phiếu chấm công (TimeCard), đơn hàng mua (PurchaseOrder), và thông tin nhân viên (Employee). Kết quả là một đối tượng Paycheck.
+- **Employee:**
+    - Phương thức:
+        - getEmployeeDetails(): Cung cấp chi tiết thông tin về nhân viên, như mức lương, các khoản khấu trừ, và phương thức thanh toán
+- **TimeCard:**
+    - Phương thức:
+        - getTimeCardDetails(employeeId: int): Cung cấp thông tin về thời gian làm việc của nhân viên dựa trên mã nhân viên.
+- **PurchaseOrder:**
+    - Phương thức:
+        - getPurchaseOrderDetails(employeeId: int): Cung cấp chi tiết về đơn hàng liên quan đến mã nhân viên.
+- **Paycheck:**
+    - Phương thức:
+        - calculatePay(): Tính toán phiếu lương cuối cùng cho nhân viên, bao gồm tổng số tiền lương, các khoản khấu trừ, và lương ròng.
+- **EmployeeDatabase:**
+    - Phương thức:
+        - getEmployeesForPayroll(currentDate: Date): Lấy danh sách các nhân viên cần trả lương trong ngày hiện tại.
+        - savePaycheck(paycheck: Paycheck): Lưu phiếu lương đã tính vào cơ sở dữ liệu.
+              
   ### 6. Login
   #### 6.1 Xác định các lớp phân tích
   - **Boundary class**:
+      - **LoginUI:**: Đây là giao diện người dùng để thực hiện chức năng đăng nhập.
   - **Control class**:
+      - **LoginController:** Đây là lớp điều khiển, chịu trách nhiệm điều phối quá trình xác thực đăng nhập.
   - **Entity class**:
-     
+      - **User:** Lớp này đại diện cho người dùng trong hệ thống và chứa các thông tin cần thiết để xác thực.
+  -  **Data Access Object (DAO)**
+      - **UserDatabase**: Đây là lớp truy cập cơ sở dữ liệu, chịu trách nhiệm truy xuất và xác nhận thông tin người dùng.
   #### 6.2 Nhiệm vụ của các lóp phân tích
+  - **LoginForm:**
+    - Hiển thị các trường để nhập tên người dùng và mật khẩu.
+    - Thu thập thông tin đăng nhập từ người dùng và chuyển tiếp chúng cho lớp điều khiển.
+  - **LoginController:**
+    - Nhận tên người dùng và mật khẩu từ LoginUI.
+    - Tương tác với UserDatabase để xác nhận thông tin đăng nhập.
+    - Gửi thông báo đến LoginUI về kết quả xác thực (thành công hoặc thất bại).
+  - **User:**
+    - Chứa thuộc tính username và password (được mã hóa) của người dùng.
+    - Cung cấp phương thức xác minh thông tin đăng nhập.
+  - **UserDatabase**
+     - Cung cấp phương thức để kiểm tra tên người dùng và mật khẩu.
+     - Lấy thông tin người dùng từ cơ sở dữ liệu để hỗ trợ quá trình xác thực của LoginController.
   #### 6.3 Biểu đồ Sequence
+  ![Diagram](https://www.planttext.com/api/plantuml/png/b991JiGm34NtFeMN834N6AbefCAiM216i7SRCrIuoSX9G3qR2ux45KZIJgT2tT15r3Z-to-__Vdwtlb06c8l0DG6f_ZiMQ5nqHhI0H_SiRDxfpsqpWPrCbRgSIEfbMtemb1az-KL30Lgo7EftKqRWAh2GvurEk2ZkfQznwg2t8URsykmBIRNL8lfm5BFIDRWYRp_T6fWRfir5vmj-jZqNK39zQkpmSsilYuWBoHTmXmHiLOs-Hea1UUFPPwolCaMFoRrGhSwQQd2pHgiSeXg5-5X-W8sYXJA-etRzock9_PHGiOZEKTuY6sEy3KAO7fMk1U9ciwVX8QKJn5XdnOwCh0akD5lJvsm-OSNgoRUsSaQW5rQyz_q2m00__y30000)
   #### 6.4 Biểu đồ lớp
+  ![Diagram](https://www.planttext.com/api/plantuml/png/b991JWGX44NtdAAMFObz0HPcaZ76XGkZyG0rKFQGq32XeCt4U38N7iah2DrDc-bneQoWUFK_7_Zw-Dnon11JRuLG5fdXcId0cu0yMaXvuR0d2Kyn6DVDvMC6NttGTyY7ios0WO9vEJtCG5F9IcqaxBstX4wyLyTxtnbtwqC_smAvI64NIEU9GSlD-XXNSA4xTMh3HukdKV6HEDdOS5AAc1VVpSfuvrqCtjebDM2AX-AiCD9Vh7-9L2xn1YFkaQdA3cYDpfB_32P7iKcYerWM5sqLolvdpcrxFRsdX42Pf85Oh5DNQEcIWEELLNPycaAjEoKmESsWVX89iSsbyfs-0G00__y30000)
   #### 6.5 Giải thích về biểu đồ lớp
+  - **User:**
+     - Phương thức:
+         - verifyPassword(password: String): boolean: Kiểm tra xem mật khẩu người dùng nhập vào có khớp với mật khẩu đã lưu (mã hóa) không.
+  - **LoginForm:**
+     - Phương thức:
+         - enterCredentials(username: String, password: String): Thu thập tên đăng nhập và mật khẩu từ người dùng rồi gửi đến LoginController.
+         - displayLoginResult(success: boolean): Hiển thị kết quả đăng nhập (thành công hoặc thất bại) cho người dùng.
+  - **LoginController:**
+     - Phương thức:
+         - authenticate(username: String, password: String): boolean: Nhận thông tin đăng nhập từ LoginUI, xác thực qua UserDatabase, và trả về kết quả (đúng/sai).
+  - **UserDatabase:**
+     - Phương thức:
+         - validateCredentials(username: String, password: String): User: Tìm và xác minh thông tin đăng nhập của người dùng; nếu hợp lệ, trả về đối tượng User.
 ## II. Viết code Java mô phỏng ca sử dụng Maintain Timecard.
