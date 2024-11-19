@@ -375,7 +375,6 @@ public class TimecardUIHandler {
 }
   - ** ProjectDatabase.java
 
-
 public class ProjectDatabase {
     public List<ChargeNumber> getChargeNumbers() {
         // For demonstration, return some dummy charge numbers
@@ -388,9 +387,8 @@ public class ProjectDatabase {
 }
 - ###  Lớp Control
   - **TimecardService.java**
-    import java.util.List;
-
-public class TimecardService {
+   
+  public class TimecardService {
     private TimecardDAO timecardDAO;
     private ProjectDatabase projectDatabase;
 
@@ -471,7 +469,6 @@ public class TimecardService {
     public String getChargeNumber() {
         return chargeNumber;
     }
-
 }
 
 - ### Lớp TimecardDAO
