@@ -328,3 +328,187 @@
      - Phương thức:
          - validateCredentials(username: String, password: String): User: Tìm và xác minh thông tin đăng nhập của người dùng; nếu hợp lệ, trả về đối tượng User.
 ## II. Viết code Java mô phỏng ca sử dụng Maintain Timecard.
+- ### **Lớp Boundary**
+  - **TimecardUIHandler.java** 
+
+public class TimecardUIHandler {
+    private TimecardService timecardService;
+
+    public TimecardUIHandler(TimecardService timecardService) {
+        this.timecardService = timecardService;
+    }
+
+    public void start() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the Timecard System");
+
+        System.out.print("Enter Employee ID: ");
+        String employeeId = scanner.nextLine();
+
+        List<ChargeNumber> chargeNumbers = timecardService.getAvailableChargeNumbers();
+        System.out.println("Available Charge Numbers:");
+        for (ChargeNumber cn : chargeNumbers) {
+            System.out.println(cn.getChargeNumber());
+        }
+
+        System.out.print("Enter Charge Number: ");
+        String chargeNumberInput = scanner.nextLine();
+
+        System.out.print("Enter Hours Worked: ");
+        double hoursWorked = scanner.nextDouble();
+
+        timecardService.createTimecard(employeeId, chargeNumberInput, hoursWorked);
+        System.out.println("Timecard created successfully!");
+
+        // Save or submit the timecard
+        System.out.println("Do you want to save or submit the timecard? (save/submit): ");
+        String action = scanner.next();
+        if ("submit".equalsIgnoreCase(action)) {
+            timecardService.submitTimecard(employeeId);
+            System.out.println("Timecard submitted successfully!");
+        } else {
+            System.out.println("Timecard saved successfully!");
+        }
+
+        scanner.close();
+    }
+}
+  - ** ProjectDatabase.java
+
+
+public class ProjectDatabase {
+    public List<ChargeNumber> getChargeNumbers() {
+        // For demonstration, return some dummy charge numbers
+        List<ChargeNumber> chargeNumbers = new ArrayList<>();
+        chargeNumbers.add(new ChargeNumber("CN001"));
+        chargeNumbers.add(new ChargeNumber("CN002"));
+        chargeNumbers.add(new ChargeNumber("CN003"));
+        return chargeNumbers;
+    }
+}
+- ###  Lớp Control
+  - **TimecardService.java**
+    import java.util.List;
+
+public class TimecardService {
+    private TimecardDAO timecardDAO;
+    private ProjectDatabase projectDatabase;
+
+    public TimecardService(TimecardDAO timecardDAO, ProjectDatabase projectDatabase) {
+        this.timecardDAO = timecardDAO;
+        this.projectDatabase = projectDatabase;
+    }
+
+    public List<ChargeNumber> getAvailableChargeNumbers() {
+        return projectDatabase.getChargeNumbers();
+    }
+
+    public void createTimecard(String employeeId, String chargeNumber, double hoursWorked) {
+        Employee employee = new Employee(employeeId);
+        Timecard timecard = new Timecard(employee, new ChargeNumber(chargeNumber), hoursWorked);
+        timecardDAO.saveTimecard(timecard);
+    }
+
+    public void submitTimecard(String employeeId) {
+        timecardDAO.submitTimecard(employeeId);
+    }
+}
+- ### Lớp Entity
+  - **Employee.java**
+    public class Employee {
+    private String employeeId;
+
+    public Employee(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+}
+  - **Timecard.java**
+    public class Timecard {
+    private Employee employee;
+    private ChargeNumber chargeNumber;
+    private double hoursWorked;
+    private boolean isSubmitted;
+
+    public Timecard(Employee employee, ChargeNumber chargeNumber, double hoursWorked) {
+        this.employee = employee;
+        this.chargeNumber = chargeNumber;
+        this.hoursWorked = hoursWorked;
+        this.isSubmitted = false;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public ChargeNumber getChargeNumber() {
+        return chargeNumber;
+    }
+
+    public double getHoursWorked() {
+        return hoursWorked;
+    }
+
+    public boolean isSubmitted() {
+        return isSubmitted;
+    }
+
+    public void submit() {
+        this.isSubmitted = true;
+    }
+
+- **ChargeNumber.java**
+  public class ChargeNumber {
+    private String chargeNumber;
+
+    public ChargeNumber(String chargeNumber) {
+        this.chargeNumber = chargeNumber;
+    }
+
+    public String getChargeNumber() {
+        return chargeNumber;
+    }
+
+}
+
+- ### Lớp TimecardDAO
+    - **TimecardDAO.java**
+public class TimecardDAO {
+    private Map<String, Timecard> timecardDatabase = new HashMap<>();
+
+    public void saveTimecard(Timecard timecard) {
+        timecardDatabase.put(timecard.getEmployee().getEmployeeId(), timecard);
+        System.out.println("Timecard saved for Employee ID: " + timecard.getEmployee().getEmployeeId());
+    }
+
+    public void submitTimecard(String employeeId) {
+        Timecard timecard = timecardDatabase.get(employeeId);
+        if (timecard != null) {
+            timecard.submit();
+            System.out.println("Timecard submitted for Employee ID: " + employeeId);
+        } else {
+            System.out.println("No timecard found for Employee ID: " + employeeId);
+        }
+    }
+
+- ### Main.java
+  public class Main {
+    public static void main(String[] args) {
+        ProjectDatabase projectDatabase = new ProjectDatabase();
+        TimecardDAO timecardDAO = new TimecardDAO();
+        TimecardService timecardService = new TimecardService(timecardDAO, projectDatabase);
+
+        TimecardUIHandler uiHandler = new TimecardUIHandler(timecardService);
+        uiHandler.start();
+    }
+}
+
+
+
+
+
+ 
+
