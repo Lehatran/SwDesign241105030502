@@ -1,9 +1,16 @@
 # Lab 3. Identify design elements
 ## 1. Subsystem context diagrams
 ### Hãy vẽ biểu đồ ngữ cảnh của các hệ thống con: BankSystem, PrintService, ProjectManagementDatabase subsystems.
+
+
 - **BankSystem**
-  ![](https://www.planttext.com/api/plantuml/png/h5BBJiCm4BplLwnwQP581TSeYYhQIsu8li1rDiIgOqTUfn01NyQ1J-8NS1ACadB51pzcTsT68tzzVExO2-UxHWDuvJNXlUYTrHeVU_RKu5uBPZmeyUH40x360rNA4Ce19yPdvMiCdOwixzi0YACz4upboBMtnWydESmoEJto75y1mtATmNRgsrp1Eu0oWQqIah2u4-RquoFBYeZ_ZYAMr5fMVYE2agn9dbACjsiCH7PWI77O2rDPrmYlh1bb9eSB1UwEFDrRPr_w_zI9tK65J0WwaCyjp8OM7Mjy83t2NAkMuM-WgvljzdQ5IP8luagnL8waZyuPHtd6inAmoFKjIMOfmAmqS4RVb_Y5wGLbg5-MOKUc73xPDm000F__0m00)
-  **PrintService**
+  ![](https://www.planttext.com/api/plantuml/png/h59BJiCm4Dtx5ADkMYHImJQgeWhOP8VW1AupKQmwTkIP52BWP2mu4bTWaYWe2LjcOO_dyzxJaxy_lux4Ed9REoMnXGSihKSmJXCXmOlb2eWnOk2kaO8-XGkgeGsFkel1kVlWkRynmk5WnaUMmPi2YTXwQCQvtPNwKCfwGIkrGSZlj3y_Tu9Uos8-rNzN0Gfi0bdUQM4o5Pfp2bDs3G8KUeGK-ZFtPOYrPXlyG3CgN31GUw8nRs9uxVwJPveM5lHiMS3d4cPBYuajFA4RobJPXjHVGpSt-_tj1f8aMzYLGc4Z6fwK4mpq11UhrSBNzoIPkQ1chHvpqhskhqGl8AM_RgiZ-gB_GZy0003__mC0)
+
+
+ - **PrintService**
+  
   ![](https://www.planttext.com/api/plantuml/png/h971Ri8m38RlVWgBovYq8hXMLOMqNRYXyGGXCskqa5I92rHiJyPXZxHNc5FQGxlheaYnO_jp_EVdzhsEh08tHmi03_X21-C8jLKnKiIpuGeZKo3FRIqNQkzF15qOjweDtjfdxpYT5B0ezDqfIxm2ecp4q3YixwdpH_W2C4w01wK9DziWpex2oOXN59iXqjUdLQUKkP9ckYBzaUDWFQ5tNJs577Sirdk7xnyt9iTc7riPv2WyVsd_WTzd2PiS6nPaqk-Lh6BZNQnC7U6lGhFbOh6QOPQLa-7pf557x7l2H9pFB1iD1QDm0WvFcbIEGcjoR-clVm400F__0m00)
-  **ProjectManagementDatabase**
+
+  
+  - **ProjectManagementDatabase**
   ![](https://www.planttext.com/api/plantuml/png/h5BBIWD14BpFLpIvc0XPz1h24aWk0HKn_a3lR6SpiZkpTFT6W_fb7lmaVy799ZuIT45mJZFLrLHrzRozl4v4aRMfIcDEO4PBvmbiYI8aSEzq1QB457HJHm2pi2RJbk7MLMIHysdmog4iYM4yjhj7ciAZWNWAKh0DCta5tJVq1r-b5N8HzK9EieUREaUbOxBW-W1xDiRvQ6o9bc1-pU6Eh5wYnuAgg3L3nGo5egFv1-tJKoizRPMlcYeZbhvb5raEHx1GThuOZFRM8k72YMxrTbDtIKcJoIR6LK7DuM7pFuBJ0pZkw8PAL1Uyh5mjveSjzCwIvBG7ms7QNizxNG5zqrs4XYsPhZIVakJt1BewaoGzckGlN3CXds-_w3i0003__mC0)
