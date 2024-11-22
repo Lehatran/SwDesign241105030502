@@ -2,8 +2,8 @@
 ## 1. Subsystem context diagrams
 ### Hãy vẽ biểu đồ ngữ cảnh của các hệ thống con: BankSystem, PrintService, ProjectManagementDatabase subsystems.
 
-
 - **BankSystem**
+
   ![](https://www.planttext.com/api/plantuml/png/h59BJiCm4Dtx5ADkMYHImJQgeWhOP8VW1AupKQmwTkIP52BWP2mu4bTWaYWe2LjcOO_dyzxJaxy_lux4Ed9REoMnXGSihKSmJXCXmOlb2eWnOk2kaO8-XGkgeGsFkel1kVlWkRynmk5WnaUMmPi2YTXwQCQvtPNwKCfwGIkrGSZlj3y_Tu9Uos8-rNzN0Gfi0bdUQM4o5Pfp2bDs3G8KUeGK-ZFtPOYrPXlyG3CgN31GUw8nRs9uxVwJPveM5lHiMS3d4cPBYuajFA4RobJPXjHVGpSt-_tj1f8aMzYLGc4Z6fwK4mpq11UhrSBNzoIPkQ1chHvpqhskhqGl8AM_RgiZ-gB_GZy0003__mC0)
 
 
