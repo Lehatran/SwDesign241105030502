@@ -4,7 +4,7 @@
 
 - **BankSystem**
 
-  ![](https://www.planttext.com/api/plantuml/png/h59BJiCm4Dtx5ADkMYHImJQgeWhOP8VW1AupKQmwTkIP52BWP2mu4bTWaYWe2LjcOO_dyzxJaxy_lux4Ed9REoMnXGSihKSmJXCXmOlb2eWnOk2kaO8-XGkgeGsFkel1kVlWkRynmk5WnaUMmPi2YTXwQCQvtPNwKCfwGIkrGSZlj3y_Tu9Uos8-rNzN0Gfi0bdUQM4o5Pfp2bDs3G8KUeGK-ZFtPOYrPXlyG3CgN31GUw8nRs9uxVwJPveM5lHiMS3d4cPBYuajFA4RobJPXjHVGpSt-_tj1f8aMzYLGc4Z6fwK4mpq11UhrSBNzoIPkQ1chHvpqhskhqGl8AM_RgiZ-gB_GZy0003__mC0)
+  ![](https://www.planttext.com/api/plantuml/png/h5BBRi8m4BpxArPS2bA3sck442fSSa5L-GB7MHeBFo9xGnkrV5aF_QJ-Gcr2Q08ScuFZp7XcdDtz-VfUUEAEQgqOkuCLRgL148fxZnxU99NW2HrQQge0yDpkaHrfUEQDiqejhQ7uHWUpcMW_vdFuO10ULvlJiV64iGDZqWItBHS8sHCtkqqJt7KGPXr-bW8KM5alQSo3XIXHx5BeTlSGZ6nqI26kcTbQfpb9QoPH7QFQMmvIV9txTbyv-zxyIzPVL2S8GMX8Kj-VQriRIg6mTQwm2-M4AQp2UW9GLyescArIs92JvdNu7xtacnb2n91rhNDqPuUMouDypJLUmeuRKIvjSKLm5HWyN_WGf-C5rJ7SbxBoxBh_euVfz744IJ8VT3UOI8U2kY9xE9R9mrvoDXY3poJfDOprgEZPrVSIloZDmF8MpnPeYZZmlm000F__0m00)
 
 
  - **PrintService**
@@ -45,4 +45,5 @@
 | ChargeNumList                  | Business Services::Project Artifacts    |
 | IPrintService                  | Middleware::PrintServices               |
 | PrintService                   | Middleware::PrintServices               |
-
+### 4. Architectural layers and their dependencies
+![](https://www.planttext.com/api/plantuml/png/b5HBJiCm4Dtd55OtNUK22A7-GAf4KKMvmE1Csw6s4zbEKGKz6GkEn1LmsgPrx2Q8RFAPD_EUvptbv-jxO2neMqgH97qsmIKfP198iGBu1bPeajC3wmsBGX07IxaoFVQHC7UTYtFOwLo8-djrSG76i5DXd2jRtL4VwljczxqiHBv3P4DkQKkMqCIJNaWY1vr5e_R9HUICiapWEsYC93wG0iK9n0BrbdYJWfH5lGIER3e2jLdiZ4KP20WAmHdcEdz3RcUWtAj4PLl6HxW9M7W5W-7YEd4HkMFuurm-9k8AIisbZahZSk5m8KDeFnjgIuxDNh7FGVWQ-UQQ_BCrNGEgzK_LCjVoaC4E3xgcZDUWL_XKoaSozdBMFdj6SSpscWgJHB5bQNhdPuFTiD9WAz3VQ0sD0rnZMvok6nEVz_OpJVqeThGVeEqvQeeyWRqW91vh9RHsi9OLb0D_QbI7lgghuOVhqMXBhTnU_zLrjC8_JY2ug6fkamDKMVMt-mK00F__0m00)
